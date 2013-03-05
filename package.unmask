@@ -1,0 +1,11 @@
+sci-chemistry/burrow-owl
+sci-chemistry/coot
+sci-chemistry/pymol
+sys-apps/portage 
+sys-devel/gcc
+www-client/chromium:0
+>=sci-libs/blas-reference-20110418
+<dev-lang/v8-9999
+dev-vcs/rapidsvn
+sys-apps/hwids
+dev-lang/python:3.3

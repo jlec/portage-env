@@ -1,0 +1,557 @@
+#required by app-accessibility/orca-3.4.2, required by app-accessibility/orca (argument)
+>=app-accessibility/speech-dispatcher-0.7.1-r1 python
+app-admin/conky -alsa -portmon audacious curl imlib iostats math nvidia
+app-admin/gentoo-smolt qt4
+app-admin/gnome-system-tools nfs policykit samba sambe
+app-admin/hddtemp network-cron
+app-admin/sudo -ldap
+app-arch/lbzip2 symlink
+app-arch/libarchive xattr
+app-arch/p7zip -X rar wxwindows
+app-arch/pigz symlink
+app-arch/unzip natspec
+app-benchmarks/bootchart acct java
+app-benchmarks/bootchart2 svg
+app-benchmarks/i7z -X
+app-cdr/brasero -totem -tracker cdrtools mp3
+app-cdr/dvd95 mpeg
+app-crypt/johntheripper -mpi custom-cflags
+#required by app-backup/deja-dup-25.1.1, required by deja-dup (argument)
+>=app-crypt/libsecret-0.12 vala
+app-crypt/pinentry gtk
+app-crypt/seahorse dbus gnome-keyring libnotify
+app-crypt/seahorse-plugins applet libnotify
+app-doc/abs-guide pdf
+app-doc/tldp-howto -html -pdf htmlsingle
+app-editors/gedit spell zeitgeist
+=app-editors/gedit-2.30.4 python
+app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
+app-emulation/libvirt -pcap -vde -virt-network caps nfs parted python qemu sasl udev virtualbox
+app-emulation/lxc examples
+# move app-emulation/qemu-kvm app-emulation/qemu
+app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
+#required by app-emulation/libguestfs-1.18.9, required by app-emulation/libguestfs (argument)
+=app-emulation/qemu-1.1.2-r2 tci
+app-emulation/virt-manager sasl
+app-emulation/virtualbox -alsa additions extensions qt4
+app-emulation/wine -cups -ldap
+#required by gnome-base/gnome-shell-3.6.2-r1[i18n], required by gnome-extra/gnome-shell-extensions-3.6.2, required by @selected, required by @world (argument)
+>=app-i18n/ibus-1.4.99.20121006 dconf
+app-misc/byobu screen
+app-misc/mc -ncurses slang
+app-misc/pax-utils caps
+app-misc/screen multiuser
+app-misc/tracker applet exif iptc mp3 nautilus pdf thunderbird
+app-misc/unfoo -minimal
+app-mobilephone/gnokii bluetooth ical sms usb
+app-mobilephone/obex-data-server usb
+app-office/libreoffice -vba -webdav gtk3 java jemalloc pdfimport python svg
+app-office/libreoffice-l10n linguas_de
+app-office/lyx latex monolithic-build subversion
+app-office/openoffice -ldap dbus gstreamer java linguas_en_GB linguas_en_US
+app-office/scribus cairo hunspell podofo
+app-office/texmaker -doc
+app-office/texmakerx -doc
+app-pda/gtkpod aac clutter flac gnome hal mp3 nls ogg webkit
+app-pda/libsyncml bluetooth
+app-portage/eix -hardened optimization sqlite strong-optimization tools
+app-portage/layman git subversion
+app-portage/pfl network-cron
+app-text/acroread -ldap -nsplugin
+app-text/aspell linguas_de
+app-text/evince djvu dvi t1lib
+app-text/ghostscript-gpl cups
+app-text/hunspell linguas_de
+app-text/lcdf-typetools kpathsea
+app-text/nopaste -X
+app-text/passivetex -doc
+app-text/poppler cairo glib jpeg png qt4 utils
+app-text/poppler-bindings cairo gtk
+app-text/tesseract linguas_de linguas_en
+app-text/texi2html -doc
+app-text/texlive -doc -indy -xindy dvipdfm extra graphics linguas_en_GB pstricks publishers science tex4ht xml
+app-text/texlive-core -doc
+dev-db/hsqldb java6
+dev-db/mysql -perl minimal
+dev-db/sqlite extensions fts3 secure-delete tcl unlock-notify
+dev-games/cegui devil opengl
+dev-java/antlr java
+dev-java/glazedlists java5
+dev-java/log4j javamail
+dev-java/swt -xulrunner
+dev-lang/R lapack
+dev-lang/path64 -assembler
+dev-lang/php gd
+dev-lang/python sqlite tk
+dev-lang/spidermonkey threadsafe
+dev-lang/swig ccache
+dev-lang/tcl threads
+dev-lang/tk threads truetype
+>=dev-lang/tk-8.5.9-r1 -truetype
+dev-libs/apr-util -ldap openssl
+>=dev-libs/apr-util-1.3.12 ldap
+dev-libs/boost -mpi expat python static-libs threads
+>=dev-libs/boost-1.47.0-r1 python
+dev-libs/cyrus-sasl -berkdb -ldap -sqlite crypt
+dev-libs/elfutils lzma
+dev-libs/folks -tracker socialweb
+>=dev-libs/keybinder-0.2.2 python
+dev-libs/libf2c static
+dev-libs/libwiimote force tilt
+>=dev-libs/libxml2-2.7.8-r3 python
+dev-libs/maloc -mpi
+dev-libs/nss utils
+dev-libs/openobex bluetooth usb
+dev-libs/xapian -sse
+>=dev-libs/xapian-bindings-1.2.7-r2 python
+dev-perl/Locale-gettext -doc
+dev-perl/Text-CSV_XS -doc
+dev-perl/Text-Iconv -doc
+dev-perl/XML-Filter-BufferText -doc
+dev-python/PyQt4 assistant dbus sql svg
+dev-python/imaging tk
+dev-python/ipython -gnuplot -wxwidgets
+dev-python/matplotlib tk
+dev-python/numpy lapack
+dev-python/pycairo -svg
+>=dev-python/pycairo-1.10.0-r2 svg
+dev-python/pyglet -alsa -openal
+dev-python/pypy sqlite
+dev-python/pyside script sql svg webkit xmlpatterns
+dev-python/qscintilla-python qt4
+dev-python/rdflib sqlite
+dev-python/sphinx latex
+dev-python/traitsgui qt4 wxwidgets
+dev-qt/qtgui gtkstyle mng
+#required by sci-visualization/qtiplot-0.9.8.9-r1, required by @selected, required by @world (argument)
+>=dev-qt/qthelp-4.8.4 compat
+>=dev-ruby/json-1.6.3 ruby_targets_ruby19
+>=dev-ruby/racc-1.4.7 ruby_targets_ruby19
+>=dev-ruby/rake-0.9.2.2 ruby_targets_ruby19
+>=dev-ruby/rdoc-3.12 ruby_targets_ruby19
+dev-ruby/ruby-elf -jruby
+>=dev-ruby/rubygems-1.8.15 ruby_targets_ruby19
+dev-scheme/guile discouraged networking threads
+dev-tcltk/tktreectrl shellicon
+dev-tex/bibtexu -doc
+dev-tex/chktex -doc
+dev-tex/dot2tex -doc
+dev-tex/dot2texi -doc
+dev-tex/latex-beamer -doc
+dev-tex/latex2html -doc
+dev-tex/latexdiff -doc
+dev-tex/latexmk -doc
+dev-tex/luatex -doc
+dev-tex/qtexengine -doc
+dev-tex/tex4ht -doc java
+dev-tex/texmfind -doc
+dev-tex/xmltex -doc
+dev-texlive/texlive-basic -doc
+dev-texlive/texlive-bibtexextra -doc
+dev-texlive/texlive-context doc
+dev-texlive/texlive-documentation-arabic doc
+dev-texlive/texlive-documentation-base -doc
+dev-texlive/texlive-documentation-bulgarian doc
+dev-texlive/texlive-documentation-chinese doc
+dev-texlive/texlive-documentation-czechslovak doc
+dev-texlive/texlive-documentation-dutch doc
+dev-texlive/texlive-documentation-english -doc
+dev-texlive/texlive-documentation-finnish doc
+dev-texlive/texlive-documentation-french doc
+dev-texlive/texlive-documentation-german doc
+dev-texlive/texlive-documentation-greek doc
+dev-texlive/texlive-documentation-italian doc
+dev-texlive/texlive-documentation-japanese doc
+dev-texlive/texlive-documentation-korean doc
+dev-texlive/texlive-documentation-mongolian doc
+dev-texlive/texlive-documentation-polish doc
+dev-texlive/texlive-documentation-portuguese doc
+dev-texlive/texlive-documentation-russian doc
+dev-texlive/texlive-documentation-serbian doc
+dev-texlive/texlive-documentation-slovenian doc
+dev-texlive/texlive-documentation-spanish doc
+dev-texlive/texlive-documentation-thai doc
+dev-texlive/texlive-documentation-turkish doc
+dev-texlive/texlive-documentation-ukrainian doc
+dev-texlive/texlive-documentation-vietnamese doc
+dev-texlive/texlive-fontsextra -doc
+dev-texlive/texlive-fontsrecommended -doc
+dev-texlive/texlive-fontutils -doc
+dev-texlive/texlive-formatsextra -doc
+dev-texlive/texlive-games doc
+dev-texlive/texlive-genericextra -doc
+dev-texlive/texlive-genericrecommended -doc
+dev-texlive/texlive-htmlxml -doc
+dev-texlive/texlive-humanities doc
+dev-texlive/texlive-langafrican doc
+dev-texlive/texlive-langarab doc
+dev-texlive/texlive-langarabic doc
+dev-texlive/texlive-langarmenian doc
+dev-texlive/texlive-langcjk doc
+dev-texlive/texlive-langcroatian doc
+dev-texlive/texlive-langcyrillic doc
+dev-texlive/texlive-langczechslovak doc
+dev-texlive/texlive-langdanish doc
+dev-texlive/texlive-langdutch doc
+dev-texlive/texlive-langenglish -doc
+dev-texlive/texlive-langfinnish doc
+dev-texlive/texlive-langfrench doc
+dev-texlive/texlive-langgerman doc
+dev-texlive/texlive-langgreek doc
+dev-texlive/texlive-langhebrew doc
+dev-texlive/texlive-langhungarian doc
+dev-texlive/texlive-langindic doc
+dev-texlive/texlive-langitalian doc
+dev-texlive/texlive-langlatin doc
+dev-texlive/texlive-langlatvian doc
+dev-texlive/texlive-langlithuanian doc
+dev-texlive/texlive-langmongolian doc
+dev-texlive/texlive-langnorwegian doc
+dev-texlive/texlive-langother doc
+dev-texlive/texlive-langpolish doc
+dev-texlive/texlive-langportuguese doc
+dev-texlive/texlive-langspanish doc
+dev-texlive/texlive-langswedish doc
+dev-texlive/texlive-langtibetan doc
+dev-texlive/texlive-langturkmen doc
+dev-texlive/texlive-langvietnamese doc
+dev-texlive/texlive-latex -doc
+dev-texlive/texlive-latexextra -doc
+# move dev-texlive/texlive-latex3 dev-texlive/texlive-latexrecommended
+dev-texlive/texlive-latexrecommended -doc
+dev-texlive/texlive-luatex doc
+dev-texlive/texlive-mathextra -doc
+dev-texlive/texlive-metapost -doc
+dev-texlive/texlive-music doc
+dev-texlive/texlive-omega doc
+dev-texlive/texlive-pictures -doc
+dev-texlive/texlive-plainextra -doc
+dev-texlive/texlive-pstricks -doc
+dev-texlive/texlive-publishers -doc
+dev-texlive/texlive-science -doc
+dev-texlive/texlive-texinfo -doc
+dev-texlive/texlive-xetex doc
+dev-util/anjuta devhelp glade graphviz subversion
+dev-util/cmake qt4
+dev-util/devhelp gedit
+dev-util/glade doc python
+dev-util/jay java
+dev-util/strace aio
+dev-vcs/cvs crypt
+dev-vcs/git curl cvs subversion threads tk webdav
+dev-vcs/rabbitvcs diff gedit git nautilus
+dev-vcs/subversion -dso java
+>=dev-vcs/subversion-1.6.17-r7 perl
+games-fps/nexuiz maps
+gnome-base/gconf policykit
+gnome-base/gdm -ldap
+gnome-base/gnome-applets policykit
+gnome-base/gnome-control-center -cheese -networkmanager socialweb
+gnome-base/gnome-settings-daemon -short-touchpad-timeout libnotify policykit
+gnome-base/gnome-shell -networkmanager
+gnome-base/gnome-vfs samba
+gnome-base/gvfs archive bluetooth cdda fuse gdu ios samba udisks
+gnome-base/nautilus -tracker exif
+gnome-extra/evolution-data-server -gnome-online-accounts kerberos ldap weather
+gnome-extra/evolution-rss webkit
+gnome-extra/gnome-games guile
+gnome-extra/gnome-media aac flac
+gnome-extra/gnome-screensaver libnotify
+gnome-extra/sushi office
+gnome-extra/zeitgeist extentions fts passiv plugins
+gnome-extra/zeitgeist-datahub download
+gnome-extra/zeitgeist-datasources chromium firefox
+gnome-extra/zeitgeist-extensions -fts
+gnome-extra/zenity libnotify
+mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
+mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar smime smtp ssl tokyocabinet
+mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-optimization dbus gconf lightning startup-notification system-sqlite
+mail-mta/nullmailer ssl
+mail-mta/ssmtp -md5sum gnutls mta
+media-fonts/terminus-font bolddiag pcf psf
+media-fonts/texcm-ttf -doc
+media-gfx/gimp aalib dbus exif lcms mng pdf postscript svg udev wmf xpm
+#required by media-gfx/photivo-0_pre20121006, required by photivo (argument)
+>=media-gfx/graphicsmagick-1.3.17 q16
+media-gfx/gthumb -gphoto2 -slideshow exif
+media-gfx/imagemagick autotrace corefonts fftw fontconfig jpeg2k lqr opencl postscript q32 svg webp xml
+media-gfx/inkscape lcms mmx postscript
+media-gfx/natural-gentoo build
+media-gfx/ngplant lua
+media-gfx/openvrmlv nsplugin
+media-gfx/pstoedit imagemagick plotutils
+media-gfx/synfig ffmpeg
+#required by media-sound/picard-1.0[acoustid], required by @selected, required by @world (argument)
+>=media-libs/chromaprint-0.6 tools
+media-libs/freetype infinality kpathsea
+#required by media-libs/fontconfig-infinality-20120619
+>=media-libs/freetype-2.4.10-r1 lcdfilter
+media-libs/gd fontconfig
+media-libs/gegl exif ffmpeg svg
+#required by media-plugins/gst-plugins-meta-1.0-r1, required by media-sound/sound-juicer-3.5.1_pre20121231, required by @selected, required by @world (argument)
+>=media-libs/gst-plugins-base-1.0.3 theora
+media-libs/imlib -gtk
+media-libs/lcms python
+media-libs/libafterimage -cvg svg
+media-libs/libcanberra udev
+media-libs/libgnome-media-profiles mp3
+media-libs/libgphoto2 exif
+media-libs/libgpod ios mono
+media-libs/libpng apng
+media-libs/libsdl xv
+media-libs/mesa g3dvl gallium llvm motif openvg
+#required by www-client/chromium-26.0.1403.0, required by www-client/chromium (argument)
+>=media-libs/mesa-9.0.1 gles2
+media-libs/sdl-mixer mikmod
+media-libs/tiff lzma
+media-libs/x264 threads
+media-plugins/audacious-plugins mad vorbis wma
+media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg lame mad mpeg ogg taglib theora vorbis xv
+>=media-plugins/gst-plugins-meta-0.10-r6 flac mp3
+media-sound/alsa-tools fltk
+media-sound/audacious dbus
+media-sound/banshee aac boo cdda encode flac ipod karma mtp podcast
+media-sound/easytag mp3
+media-sound/exaile -libnotify cddb mad
+media-sound/grip vorbis
+media-sound/guayadeque indicate ipod
+media-sound/lastfm-ripper tagwriting
+media-sound/lastfmplayer ipod
+media-sound/picard cdda coverart ffmpeg
+media-sound/streamripper vorbis
+=media-video/ffmpeg-0.9 mp3 threads x264
+>=media-video/gpac-0.4.5-r4 a52
+media-video/h264enc aac dvd lame mp4
+media-video/libav aac avx fdk mp3 x264
+media-video/mplayer -dxr3 -libmpeg2 amr faac md5sum mng
+media-video/recordmydesktop jack
+media-video/totem -gnome -hal -nsplugin -python -vorbis -youtube
+media-video/vlc -directfb -dts -httpd -kde -oss -ssl -svga a52 aac cdda cddb cdio dbus dvd fbcon ffmpeg flac freetype gtk hal libnotify mmx mozilla mp3 mpeg nsplugin ogg qt4 rtsp sdl sqlite stream svg theora udev unicode v4l2 vcd vorbis win32codecs wxwindows x264 xml xv xvid
+net-analyzer/munin -cgi dhcpd http
+net-analyzer/nagios-nrpe command-args ssl
+net-analyzer/nagios-plugins nagios-ping nagios-ssh snmp
+net-analyzer/net-snmp -lm_sensors
+net-analyzer/netcat crypt
+net-analyzer/rrdtool tcl
+#required by net-analyzer/munin-1.4.7[-minimal], required by net-analyzer/munin (argument)
+>=net-analyzer/rrdtool-1.4.7 perl
+net-analyzer/wireshark gcrypt smi
+net-fs/autofs ldap
+net-fs/nfs-utils -nfsv3 nfsidmap nfsv41
+net-fs/samba -cups -ldap -server -swat acl
+net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
+net-im/pidgin gnutls gstreamer python spell
+net-im/skype qt-static
+net-libs/gtk-vnc sasl
+>=net-libs/gtk-vnc-0.4.3-r1 python
+>=net-libs/gtk-vnc-0.4.4 gtk3
+net-libs/libnfsidmap -ldap
+net-libs/libnice gstreamer
+net-libs/libsocialweb -networkmanager
+>=net-libs/libsocialweb-0.25.20 vala
+net-libs/libsoup gnome
+net-libs/libsoup-gnome gnome
+net-libs/neon linguas_de
+net-libs/webkit-gtk -debug -pango gstreamer
+net-libs/xulrunner -java custom-optimization ipc libnotify system-sqlite
+net-misc/aria2 scripts xmlrpc
+net-misc/curl -ldap -nss gnutls threads
+net-misc/dhcpcd -compat
+net-misc/iperf threads
+net-misc/networkmanager -ppp dhcpcd nss
+net-misc/openssh ldns
+net-misc/openvpn -threads iproute2 passwordsave
+net-misc/rdesktop -alsa
+net-misc/spice-gtk -gstreamer
+#required by app-emulation/virt-manager-0.9.4[spice], required by @selected, required by @world (argument)
+>=net-misc/spice-gtk-0.14-r1 python sasl
+net-misc/vde pcap
+net-misc/vinagre rdp
+net-misc/wicd -pm-utils libnotify
+net-nds/openldap -cxx -gnutls -minimal -sasl crypt perl samba syslog
+net-p2p/rtorrent color
+net-print/cups -java -ldap -samba X acl dbus gnutls jpeg linguas_en pam perl png ppds python ssl tiff
+net-print/hplip cupsddk minimal
+net-wireless/aircrack-ng wifi
+net-wireless/bluez -alsa -cups usb
+net-wireless/bluez-utils usb
+net-wireless/wpa_supplicant qt4
+>=net-wireless/wpa_supplicant-0.7.3-r5 dbus
+sci-biology/bioperl -db sqlite
+sci-biology/embassy X pdf png
+sci-biology/embassy-cbstools X pdf png
+sci-biology/embassy-domainatrix X pdf png
+sci-biology/embassy-domalign X pdf png
+sci-biology/embassy-domsearch X pdf png
+sci-biology/embassy-emnu X pdf png
+sci-biology/embassy-esim4 X pdf png
+sci-biology/embassy-hmmer X pdf png
+sci-biology/embassy-iprscan X pdf png
+sci-biology/embassy-memenew X pdf png
+sci-biology/embassy-mira X pdf png
+sci-biology/embassy-mse X pdf png
+sci-biology/embassy-phylipnew X pdf png
+sci-biology/embassy-signature X pdf png
+sci-biology/embassy-structure X pdf png
+sci-biology/embassy-topo X pdf png
+sci-biology/embassy-vienna X pdf png
+sci-biology/emboss X pdf png
+sci-biology/fasta -icc sse2
+sci-biology/rebase -emboss
+sci-chemistry/almost -mpi -sse
+sci-chemistry/ambertools -mpi -scalapack X openmp
+sci-chemistry/apbs -mpi arpack blas fetk tinker tk
+>=sci-chemistry/apbs-1.3-r1 python
+sci-chemistry/avogadro glsl
+sci-chemistry/ballview gsl
+sci-chemistry/ccp4 -balbes arpwarp
+sci-chemistry/ccpn extendnmr numpy
+sci-chemistry/ccpnmr examples
+sci-chemistry/cns aria debug openmp scripts
+sci-chemistry/coot new-interface
+sci-chemistry/cyana -examples
+sci-chemistry/gromacs altivec blas lapack xml
+sci-chemistry/hkl2map-bin script
+sci-chemistry/jmol client-only
+sci-chemistry/mifit debug examples
+sci-chemistry/modeller-bin -python example
+sci-chemistry/oasis -minimal
+sci-chemistry/openbabel perl python wxwidgets
+sci-chemistry/pdb2pqr pdb2pka
+sci-chemistry/pymol apbs numpy shaders vmd
+sci-chemistry/raster3d gd
+sci-chemistry/tinker -X
+sci-chemistry/vmd cuda msms povray
+sci-libs/arpack -mpi
+sci-libs/atlas fortran lapack threads
+sci-libs/blas-goto threads
+sci-libs/cctbx -minimal -threads openmp
+#required by sci-libs/umfpack-5.6.1[-metis], required by sci-libs/punc-1.5, required by sci-libs/fetk-1.5, required by sci-chemistry/apbs-1.3-r3[fetk], required by @selected, required by @world (argument)
+>=sci-libs/cholmod-2.0.1 metis
+sci-libs/fftw -mpi avx quad threads
+sci-libs/gdal geos
+#required by dev-python/basemap-1.0.5, required by basemap (argument)
+>=sci-libs/geos-3.3.5 python
+sci-libs/hdf5 -threads
+sci-libs/libcmatrix -atlas threads
+sci-libs/mkl -mpi fftw fortran95 int64
+sci-libs/netcdf fortran
+sci-libs/scip fftw
+sci-libs/scipy umfpack
+sci-libs/starparse guile
+sci-libs/vtk -mpi R boost cg ffmpeg patented python qt4 tcl theora tk
+sci-mathematics/pari gmp
+sci-visualization/gnuplot gd latex pdf plotutils wxwidgets wxwindows
+sci-visualization/grace fftw
+sci-visualization/mayavi qt4
+sci-visualization/qtiplot emf latex ods origin png python xls
+sys-apps/acl nfs
+sys-apps/coreutils acl gmp
+sys-apps/flashrom gfxnvidia nicintel_spi
+sys-apps/gnome-disk-utility fat
+sys-apps/hal -crypt consolekit
+sys-apps/hwloc -X -cairo
+sys-apps/irqbalance caps
+sys-apps/kexec-tools lzma
+sys-apps/man-db -berkdb
+sys-apps/pciutils -zlib
+sys-apps/portage -doc
+sys-apps/smartmontools minimal
+sys-apps/texinfo -doc
+sys-apps/util-linux crypt udev
+sys-apps/v86d x86emu
+sys-auth/consolekit pam policykit
+sys-auth/pambase consolekit gnome-keyring ssh
+sys-block/gparted fat ntfs reiserfs
+sys-block/parted device-mapper
+sys-boot/plymouth gdm
+sys-cluster/maui pbs
+sys-cluster/mpich2 fortran mpi-threads romio threads
+sys-cluster/openmpi -threads
+sys-cluster/torque crypt tk
+sys-devel/gcc -gtk -libffi fortran gcj graphite multilib
+sys-devel/gdb expat python
+sys-devel/gettext -doc
+sys-devel/patch xattr
+sys-fs/aufs2 inotify kernel-patch nfs
+sys-fs/aufs3 inotify kernel-patch nfs
+sys-fs/hfsutils tcl tk
+sys-fs/ntfs3g ntfsprogs
+sys-fs/quota netlink rpc
+sys-fs/udev edd extras gudev hwdb keymap
+#required by media-sound/pulseaudio-1.1-r1[udev], required by app-emulation/qemu-kvm-1.0-r3[pulseaudio], required by @selected, required by @world (argument)
+=sys-fs/udev-181 hwdb
+#required by media-sound/pulseaudio-1.1-r1[udev], required by media-video/vlc-2.0.1[pulseaudio], required by @selected, required by @world (argument)
+=sys-fs/udev-182 hwdb
+sys-fs/udisks -crypt
+sys-kernel/lh-sources symlink
+sys-libs/glibc glibc-omitfp multilib
+sys-libs/ncurses tinfo
+sys-libs/pam -nis
+>=sys-libs/zlib-1.2.5.1-r2 minizip
+sys-power/nvclock nvcontrol
+sys-power/upower ios
+sys-process/htop cgroup
+sys-process/lsof rpc
+virtual/ffmpeg X encode mp3 threads x264
+virtual/latex-base -doc
+virtual/mpi romio
+>=virtual/mpi-2.0-r2 fortran
+virtual/mysql minimal
+virtual/perl-Locale-Maketext-Simple -doc
+virtual/poppler-glib cairo
+virtual/tex-base -doc
+virtual/texi2dvi -doc
+virtual/udev -keymap
+#required by sys-fs/udisks-2.0.0, required by sys-apps/gnome-disk-utility-3.4.1, required by @selected, required by @world (argument)
+>=virtual/udev-180 gudev hwdb
+www-apps/swish-e -mp3 -pdf -perl
+www-client/chromium custom-cflags system-v8
+www-client/firefox custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-sqlite
+www-client/links svga
+www-client/midori -html idn libnotify soup sqlite
+www-client/uzbl gtk3
+www-plugins/adobe-flash nspluginwrapper
+x11-base/xorg-drivers udev
+x11-base/xorg-server hal udev xvfb
+=x11-base/xorg-server-1.10.2 xvfb
+x11-drivers/nvidia-drivers multilib
+x11-libs/cairo glitz svg xcb
+=x11-libs/cairo-1.10.2-r1 X
+>=x11-libs/gdk-pixbuf-2.24.0-r1 jpeg
+#required by media-libs/mesa-8.1_rc1_pre20120724[xorg], required by x11-libs/cairo-1.12.2-r2[opengl], required by app-text/evince-3.4.0, required by @selected, required by @world (argument)
+>=x11-libs/libdrm-2.4.37 libkms
+x11-libs/qt -gtkstyle
+x11-libs/qt-assistant compat
+x11-libs/qt-core glib
+>=x11-libs/qt-core-4.7.3 qt3support
+>=x11-libs/qt-declarative-4.7.4 webkit
+x11-libs/qt-gui -egl dbus gtkstyle mng
+>=x11-libs/qt-gui-4.7.3 qt3support
+x11-libs/qt-opengl -egl
+x11-libs/qt-phonon dbus
+>=x11-libs/qt-sql-4.7.3 qt3support
+x11-libs/qwt svg
+x11-libs/vte python
+x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startup-notification
+x11-terms/rxvt-unicode -afterimage -vanilla -wcwidth -xterm-color 256-color perl pixbuf truetype xft
+x11-terms/terminator libnotify
+x11-themes/gentoo-artwork offensive
+x11-themes/gtk-engines-murrine -themes
+x11-wm/fluxbox imlib
+sys-devel/gcc:4.7 multislot
+sys-devel/gcc:4.1 -cxx
+sys-devel/gcc:4.1 nocxx
+sys-devel/gcc:3.4 -gcj
+dev-tex/* doc
+sys-devel/gcc:4.6 lto
+gnutlsnet-misc/curl
+x11-libs/qt-gui
+x11-libs/qt-opengl
+x11-libs/qt-sql
+# required by www-client/chromium-27.0.1425.0
+# required by gnome-extra/zeitgeist-datasources-0.8.0.1[chromium]
+# required by gnome-extra/zeitgeist-0.9.5[plugins]
+# required by dev-libs/libzeitgeist-0.3.18
+# required by gnome-extra/zeitgeist-datahub-0.9.5
+=media-video/ffmpeg-1.0.5 opus
