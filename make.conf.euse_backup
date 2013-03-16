@@ -1,0 +1,167 @@
+ACCEPT_KEYWORDS="amd64 ~amd64"
+
+PHP_TARGETS=""
+RUBY_TARGETS="ruby19"
+#RUBY_TARGETS="jruby"
+
+PYTHON_COLORS="true"
+CMAKE_VERBOSE="true"
+TEST_VERBOSE="true"
+
+GRUB_PLATFORMS="efi-64 pc"
+
+# echo "int main() { return 0; }" | gcc -march=native -v -E - 2>&1 | grep march
+## -march=corei7-avx -mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-tbm -mavx -msse4.2 -msse4.1 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192 -mtune=corei7-avx
+## -march=corei7-avx -mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mavx -mno-avx2 -msse4.2 -msse4.1 -mno-lzcnt --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192 -mtune=corei7-avx
+## -march=corei7-avx -mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mavx -mno-avx2 -msse4.2 -msse4.1 -mno-lzcnt -mno-rdrnd -mno-f16c -mno-fsgsbase --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192 -mtune=corei7-avx
+
+BASE1="-O2 -pipe"
+BASE1a="-ftracer"
+BASE2="-march=corei7-avx -mtune=corei7-avx"
+BASE2a="-mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mavx -mno-avx2 -msse4.2 -msse4.1 -mno-lzcnt -mno-rdrnd -mno-f16c -mno-fsgsbase"
+BASE3="--param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192"
+BASE4="-frecord-gcc-switches -g"
+BASEFLAGS="${BASE1} ${BASE1a} ${BASE2} ${BASE2a} ${BASE3} ${BASE4}"
+#CFLAGS_WARN="-Wimplicit-function-declaration -Wmissing-include-dirs"
+#CXXFLAGS_WARN="-Wenum-compare -Wmissing-include-dirs"
+CFLAGS_WARN="-Wimplicit-function-declaration"
+CXXFLAGS_WARN="-Wenum-compare"
+
+CFLAGS="${BASEFLAGS} ${CFLAGS_WARN}"
+CXXFLAGS="${BASEFLAGS} ${CXXFLAGS_WARN}"
+
+FFLAGS="${BASEFLAGS}"
+FCFLAGS="${BASEFLAGS}"
+LDFLAGS="${LDFLAGS} -Wl,-O1 -Wl,--hash-style=gnu -Wl,--sort-common"
+CHOST="x86_64-pc-linux-gnu"
+F77="x86_64-pc-linux-gnu-gfortran"
+FC="x86_64-pc-linux-gnu-gfortran"
+FORTRANC="x86_64-pc-linux-gnu-gfortran"
+
+ACCEPT_LICENSE="*"
+USE_PYTHON="2.6 2.7 3.1 3.2 3.3 2.7-pypy-1.9 2.7-pypy-2.0"
+PYTHON_TARGETS="python2_7 python2_6 python3_1 python3_2 python3_3 pypy1_9 pypy2_0"
+PORT_LOGDIR="/var/log/portage"
+
+I_KNOW_WHAT_I_AM_DOING="yes"
+LD_AS_NEEDED="1"
+
+OMP_NUM_THREADS="8"
+MAXMEM="4096"
+MAXATOMS="100000"
+
+#MAKEOPTS="V=1 -j12 -l12"
+MAKEOPTS="-j16 -l12"
+FEATURES="buildsyspkg multilib-strict collision-protect parallel-fetch noinfo splitdebug sign split-log parallel-install"
+FEATURES="${FEATURES} -config-protect-if-modified"
+FEATURES="${FEATURES} userpriv usersync usersandbox userfetch"
+FEATURES="${FEATURES} ccache"
+FEATURES="${FEATURES} xattr"
+FEATURES="${FEATURES} compressdebug"
+FEATURES="${FEATURES} metadata-transfer"
+
+LINGUAS="en"
+
+CCACHE_SIZE="2G"
+CCACHE_DIR="/local/home/ccache"
+
+#EMERGE_DEFAULT_OPTS="--jobs=12 --load-average=12"
+EMERGE_DEFAULT_OPTS="--jobs=4 --load-average=12"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} -t --keep-going --autounmask-write --autounmask --quiet-build=n"
+QUICKPKG_DEFAULT_OPTS="--umask=0011 --include-config=y"
+EBUILD_DEFAULT_OPTS="--skip-manifest"
+
+CONFIG_PROTECT="/usr/share/nano/ /usr/share/eselect/"
+
+PORTAGE_COMPRESS="xz"
+PORTAGE_COMPRESS_FLAGS="-z -e -9 -v"
+
+VIDEO_CARDS="nvidia"
+#VIDEO_CARDS="nouveau"
+#INPUT_DEVICES="keyboard mouse evdev"
+INPUT_DEVICES="evdev"
+ALSA_CARDS="hda-intel"
+DRACUT_MODULES="plymouth"
+SANE_BACKENDS=""
+
+PORTAGE_ELOG_CLASSES="warn error log"
+PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"
+PORTAGE_ELOG_SYSTEM="custom:* save echo"
+PORTAGE_ELOG_COMMAND="/usr/bin/gentwoo '${PACKAGE}' '${LOGFILE}'"
+
+OLDUSE="64bit 7zip X acpi additions alsa arpwarp atlas bash-completion blas \
+branding c++ cairo caps cblas ccache cleartype command-args consolekit \
+corefonts crypt cuda cupsddk custom-optimization cxx dbus dts exif \
+fbcondecor fortran gif glib glibc-omitfp gmp gnome gnome-keyring \
+graphics gstreamer gtk hddtemp icu ios ipod iproute2 iptables ipython \
+javascript jpeg jpeg2k kqemu lapack largefile lcms ldap libnotify \
+libsexy lm_sensors lzma mailtrain md5sum mmx mmxext mng mp3 multiuser \
+nagios-dns nagios-ntp nagios-ping nagios-ssh nano-syntax network-cron \
+nsplugin numa opencl opengl openntpd pam pdf png policykit pulseaudio \
+pymol qt-static qt3support rrdcgi rrdtool science sensord smp sqlite \
+sqlite3 sse sse2 sse3 sse4 sse4a sse5 startup-notification svg \
+system-sqlite threads tiff truetype type1 udev vaapi vdpau x264 xattr xcb \
+xcomposite xinerama xulrunner -acl -bindist -directfb -fltk -java -kde \
+-libkms -qt4 -static -symlink -v4l -v4l2"
+
+SYNC="rsync://rsync.gentoo.org/gentoo-portage"
+#SYNC="rsync://rsync.j-schmitz.net/gentoo-portage"
+
+PORTAGE_EXTRA_TMPDIR="/mnt/extData/tmp"
+
+GENTOO_MIRRORS="
+/mnt/tmpfs/
+http://gentoo.j-schmitz.net/mirror/
+ftp://sunsite.informatik.rwth-aachen.de/pub/Linux/gentoo
+ftp://ftp.tu-clausthal.de/pub/linux/gentoo/"
+#ftp://ftp.gentoo.mesh-solutions.com/gentoo/
+
+PORTAGE_RO_DISTDIRS="
+/home/justin/software/
+"
+
+PORTAGE_REPO_DUPLICATE_WARN="0"
+OVERLAY_BASE="/local/overlays"
+
+PORTDIR_OVERLAY="
+${OVERLAY_BASE}/sunrise-reviewed
+${OVERLAY_BASE}/bicatali
+${OVERLAY_BASE}/betagarden
+${OVERLAY_BASE}/dummy
+${OVERLAY_BASE}/neurogeek
+${OVERLAY_BASE}/sci
+${OVERLAY_BASE}/lh/ebuilds
+${OVERLAY_BASE}/g-ctan"
+#source /var/lib/layman/make.conf
+
+#FETCHCOMMAND="/usr/bin/axel -a -o \${DISTDIR}/\${FILE} \${URI}"
+#RESUMECOMMAND="${FETCHCOMMAND}"
+#source /usr/share/fetchcommandwrapper/make.conf
+#PORTAGE_ECLASS_WARNING_ENABLE="0"
+
+E_STORE_DIR="/local/portage-vcs"
+ESVN_STORE_DIR="${E_STORE_DIR}/svn-src/"
+EGIT_STORE_DIR="${E_STORE_DIR}/git-src/"
+EBZR_STORE_DIR="${E_STORE_DIR}/bzr-src/"
+EHG_STORE_DIR="${E_STORE_DIR}/hg-src/"
+
+#PORTAGE_IONICE_COMMAND="ionice -c 3 -p \${PID}"
+#PORTAGE_NICENESS="19"
+
+PORTAGE_GPG_DIR="~/.gnupg/"
+PORTAGE_GPG_KEY="70EB7916"
+
+QEMU_SOFTMMU_TARGETS="i386 x86_64 arm"
+QEMU_USER_TARGETS="i386 x86_64 arm"
+
+USE="X alsa bash-completion branding cairo caps cups dbus gif gmp gnome \
+     gnome-keyring gstreamer gtk icu jpeg jpeg2k ldap logrotate mmxext \
+     network-cron nsplugin numa opengl openmp png pulseaudio qt3support smp \
+     sse2_4way sse2check sse3 sse4 sse41 sse4_1 sse4a sse5 ssse3 \
+     startup-notification threads tiff truetype unicode vaapi vdpau xinerama \
+     -3dnow -3dnowext -kde -qt4"
+
+EGIT_OPTIONS="-v"
+
+NGINX_MODULES_HTTP="fastcgi rewrite dav stub_status"
+LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer nlpsolver"
