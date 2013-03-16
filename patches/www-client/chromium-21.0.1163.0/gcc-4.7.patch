@@ -1,0 +1,362 @@
+commit 3fcbd4b4db3bb67e5e3d10944335c3a91f22723e
+Author: shenhan@google.com <shenhan@google.com@0039d316-1c4b-4281-b951-d872f2087c98>
+Date:   Tue Jun 5 01:54:46 2012 +0000
+
+    Fixing gcc 4.7 building problems.
+    
+    a) - gcc-4.7 improved the implicit headers that it includes. with
+    <4.7, the gthr-default.h file always pulls in unistd.h. with >=4.7,
+    they avoided that include when possible. so code that isn't including
+    unistd.h itself but needs it now breaks.
+    
+    b) - narrowing conversion in initiliazation list now raises an
+    'ill-formed conversion' warning, which causes error when -Werror is
+    given.
+    
+    [THIS PART IS NOW REVERTED IN THE PATCH} c) - included patches from pastebin - http://pastebin.com/raw.php?i=p3UKs7Cg
+    
+    Note - this may not be fixing all the gcc 4.7 build problems for all
+    parts, but rather than submitting one big-fix-for-all CL, we'd better
+    do it incrementally (given that all the modification is reasonable and
+    minor) so that at least some parts get a successful gcc 4.7 build.
+    
+    BUG=None
+    TEST=Built successfully using GCC-4.7 under chromium chroot
+    
+    
+    Review URL: https://chromiumcodereview.appspot.com/10451068
+    
+    git-svn-id: svn://svn.chromium.org/chrome/trunk/src@140470 0039d316-1c4b-4281-b951-d872f2087c98
+
+diff --git a/base/time_posix.cc b/base/time_posix.cc
+index 18203cf..6f4423f 100644
+--- a/base/time_posix.cc
++++ b/base/time_posix.cc
+@@ -34,7 +34,7 @@ struct timespec TimeDelta::ToTimeSpec() const {
+   }
+   struct timespec result =
+       {seconds,
+-       microseconds * Time::kNanosecondsPerMicrosecond};
++       static_cast<long>(microseconds * Time::kNanosecondsPerMicrosecond)};
+   return result;
+ }
+ 
+diff --git a/chrome/browser/chromeos/process_proxy/process_output_watcher.cc b/chrome/browser/chromeos/process_proxy/process_output_watcher.cc
+index 559b183..d7d719e 100644
+--- a/chrome/browser/chromeos/process_proxy/process_output_watcher.cc
++++ b/chrome/browser/chromeos/process_proxy/process_output_watcher.cc
+@@ -10,6 +10,7 @@
+ 
+ #include <sys/ioctl.h>
+ #include <sys/select.h>
++#include <unistd.h>
+ 
+ #include "base/eintr_wrapper.h"
+ #include "base/logging.h"
+diff --git a/chrome/browser/extensions/settings/settings_frontend.cc b/chrome/browser/extensions/settings/settings_frontend.cc
+index 198d1e2..99d0441 100644
+--- a/chrome/browser/extensions/settings/settings_frontend.cc
++++ b/chrome/browser/extensions/settings/settings_frontend.cc
+@@ -100,9 +100,9 @@ SettingsStorageQuotaEnforcer::Limits GetLocalLimits() {
+ 
+ SettingsStorageQuotaEnforcer::Limits GetSyncLimits() {
+   SettingsStorageQuotaEnforcer::Limits limits = {
+-    api::storage::sync::QUOTA_BYTES,
+-    api::storage::sync::QUOTA_BYTES_PER_ITEM,
+-    api::storage::sync::MAX_ITEMS
++    static_cast<size_t>(api::storage::sync::QUOTA_BYTES),
++    static_cast<size_t>(api::storage::sync::QUOTA_BYTES_PER_ITEM),
++    static_cast<size_t>(api::storage::sync::MAX_ITEMS)
+   };
+   return limits;
+ }
+diff --git a/chrome/browser/policy/policy_path_parser_linux.cc b/chrome/browser/policy/policy_path_parser_linux.cc
+index 2f9ea26..d641ca1 100644
+--- a/chrome/browser/policy/policy_path_parser_linux.cc
++++ b/chrome/browser/policy/policy_path_parser_linux.cc
+@@ -1,8 +1,10 @@
+-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
++// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+ #include <pwd.h>
++#include <sys/types.h>
++#include <unistd.h>
+ 
+ #include "chrome/browser/policy/policy_path_parser.h"
+ 
+diff --git a/content/public/common/sandbox_init.cc b/content/public/common/sandbox_init.cc
+index 528eec7..6f0b49c 100644
+--- a/content/public/common/sandbox_init.cc
++++ b/content/public/common/sandbox_init.cc
+@@ -4,7 +4,7 @@
+ 
+ #include "content/public/common/sandbox_init.h"
+ 
+-#if defined(OS_ANDROID)
++#if defined(OS_POSIX)
+ #include <unistd.h>
+ #endif
+ 
+diff --git a/crypto/ec_private_key_nss.cc b/crypto/ec_private_key_nss.cc
+index 1fb13e7..a799285 100644
+--- a/crypto/ec_private_key_nss.cc
++++ b/crypto/ec_private_key_nss.cc
+@@ -1,4 +1,4 @@
+-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
++// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+@@ -128,7 +128,7 @@ bool ECPrivateKey::ImportFromEncryptedPrivateKeyInfo(
+   SECItem encoded_epki = {
+     siBuffer,
+     const_cast<unsigned char*>(encrypted_private_key_info),
+-    encrypted_private_key_info_len
++    static_cast<unsigned>(encrypted_private_key_info_len)
+   };
+   SECKEYEncryptedPrivateKeyInfo epki;
+   memset(&epki, 0, sizeof(epki));
+@@ -150,7 +150,7 @@ bool ECPrivateKey::ImportFromEncryptedPrivateKeyInfo(
+   SECItem password_item = {
+     siBuffer,
+     reinterpret_cast<unsigned char*>(const_cast<char*>(password.data())),
+-    password.size()
++    static_cast<unsigned>(password.size())
+   };
+ 
+   rv = ImportEncryptedECPrivateKeyInfoAndReturnKey(
+@@ -185,7 +185,7 @@ bool ECPrivateKey::ExportEncryptedPrivateKey(
+   SECItem password_item = {
+     siBuffer,
+     reinterpret_cast<unsigned char*>(const_cast<char*>(password.data())),
+-    password.size()
++    static_cast<unsigned>(password.size())
+   };
+ 
+   SECKEYEncryptedPrivateKeyInfo* encrypted = PK11_ExportEncryptedPrivKeyInfo(
+@@ -264,7 +264,8 @@ ECPrivateKey* ECPrivateKey::CreateWithParams(bool permanent,
+   DCHECK_LE(oid_data->oid.len, 127U);
+   std::vector<unsigned char> parameters_buf(2 + oid_data->oid.len);
+   SECKEYECParams ec_parameters = {
+-    siDEROID, &parameters_buf[0], parameters_buf.size()
++    siDEROID, &parameters_buf[0],
++    static_cast<unsigned>(parameters_buf.size())
+   };
+ 
+   ec_parameters.data[0] = SEC_ASN1_OBJECT_ID;
+@@ -300,7 +301,7 @@ ECPrivateKey* ECPrivateKey::CreateFromEncryptedPrivateKeyInfoWithParams(
+   SECItem encoded_spki = {
+     siBuffer,
+     const_cast<unsigned char*>(&subject_public_key_info[0]),
+-    subject_public_key_info.size()
++    static_cast<unsigned>(subject_public_key_info.size())
+   };
+   CERTSubjectPublicKeyInfo* decoded_spki = SECKEY_DecodeDERSubjectPublicKeyInfo(
+       &encoded_spki);
+diff --git a/crypto/ec_signature_creator_nss.cc b/crypto/ec_signature_creator_nss.cc
+index 388870f..a85b1e9 100644
+--- a/crypto/ec_signature_creator_nss.cc
++++ b/crypto/ec_signature_creator_nss.cc
+@@ -8,6 +8,9 @@
+ #include <pk11pub.h>
+ #include <secerr.h>
+ #include <sechash.h>
++#if defined(OS_POSIX)
++#include <unistd.h>
++#endif
+ 
+ #include "base/logging.h"
+ #include "crypto/ec_private_key.h"
+@@ -34,12 +37,14 @@ SECStatus SignData(SECItem* result,
+       hash_type, &hash_data[0], input->data, input->len);
+   if (rv != SECSuccess)
+     return rv;
+-  SECItem hash = {siBuffer, &hash_data[0], hash_data.size()};
++  SECItem hash = {siBuffer, &hash_data[0],
++                  static_cast<unsigned int>(hash_data.size())};
+ 
+   // Compute signature of hash.
+   int signature_len = PK11_SignatureLen(key);
+   std::vector<uint8> signature_data(signature_len);
+-  SECItem sig = {siBuffer, &signature_data[0], signature_len};
++  SECItem sig = {siBuffer, &signature_data[0],
++                 static_cast<unsigned int>(signature_len)};
+   rv = PK11_Sign(key, &sig, &hash);
+   if (rv != SECSuccess)
+     return rv;
+diff --git a/crypto/third_party/nss/secsign.cc b/crypto/third_party/nss/secsign.cc
+index 9272d4a..a788def 100644
+--- a/crypto/third_party/nss/secsign.cc
++++ b/crypto/third_party/nss/secsign.cc
+@@ -93,12 +93,14 @@ SECStatus DerSignData(PLArenaPool *arena,
+       hash_type, &hash_data[0], input->data, input->len);
+   if (rv != SECSuccess)
+     return rv;
+-  SECItem hash = {siBuffer, &hash_data[0], hash_data.size()};
++  SECItem hash = {siBuffer, &hash_data[0], 
++		  static_cast<unsigned int>(hash_data.size())};
+ 
+   // Compute signature of hash.
+   int signature_len = PK11_SignatureLen(key);
+   std::vector<uint8> signature_data(signature_len);
+-  SECItem sig = {siBuffer, &signature_data[0], signature_len};
++  SECItem sig = {siBuffer, &signature_data[0], 
++		 static_cast<unsigned int>(signature_len)};
+   rv = PK11_Sign(key, &sig, &hash);
+   if (rv != SECSuccess)
+     return rv;
+diff --git a/ipc/ipc_channel.h b/ipc/ipc_channel.h
+index 2aeca1f..14c375b 100644
+--- a/ipc/ipc_channel.h
++++ b/ipc/ipc_channel.h
+@@ -8,6 +8,10 @@
+ 
+ #include <string>
+ 
++#if defined(OS_POSIX)
++#include <sys/types.h>
++#endif
++
+ #include "base/compiler_specific.h"
+ #include "base/process.h"
+ #include "ipc/ipc_channel_handle.h"
+diff --git a/ipc/ipc_channel_posix.cc b/ipc/ipc_channel_posix.cc
+index 9d9b8d1..3e39534 100644
+--- a/ipc/ipc_channel_posix.cc
++++ b/ipc/ipc_channel_posix.cc
+@@ -11,6 +11,7 @@
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <sys/un.h>
++#include <unistd.h>
+ 
+ #if defined(OS_OPENBSD)
+ #include <sys/uio.h>
+@@ -898,7 +899,7 @@ Channel::ChannelImpl::ReadState Channel::ChannelImpl::ReadData(
+ 
+   struct msghdr msg = {0};
+ 
+-  struct iovec iov = {buffer, buffer_len};
++  struct iovec iov = {buffer, static_cast<size_t>(buffer_len)};
+   msg.msg_iov = &iov;
+   msg.msg_iovlen = 1;
+ 
+diff --git a/ipc/ipc_platform_file.cc b/ipc/ipc_platform_file.cc
+index b5ec7be..6aad89b 100644
+--- a/ipc/ipc_platform_file.cc
++++ b/ipc/ipc_platform_file.cc
+@@ -1,10 +1,10 @@
+-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
++// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+ #include "ipc/ipc_platform_file.h"
+ 
+-#if defined(OS_ANDROID)
++#if defined(OS_POSIX)
+ #include <unistd.h>
+ #endif
+ 
+diff --git a/net/base/x509_util_nss.cc b/net/base/x509_util_nss.cc
+index 08cd7e9..5bdef7c 100644
+--- a/net/base/x509_util_nss.cc
++++ b/net/base/x509_util_nss.cc
+@@ -196,7 +196,7 @@ bool CreateDomainBoundCertInternal(
+   SECItem domain_string_item = {
+     siAsciiString,
+     (unsigned char*)domain.data(),
+-    domain.size()
++    static_cast<unsigned>(domain.size())
+   };
+ 
+   // IA5Encode and arena allocate SECItem
+diff --git a/ppapi/tests/test_broker.cc b/ppapi/tests/test_broker.cc
+index db75def..478168b 100644
+--- a/ppapi/tests/test_broker.cc
++++ b/ppapi/tests/test_broker.cc
+@@ -10,6 +10,7 @@
+ #else
+ #define OS_POSIX 1
+ #include <errno.h>
++#include <unistd.h>
+ #endif
+ 
+ #include <cstdio>
+diff --git a/ui/gfx/skia_utils_gtk.cc b/ui/gfx/skia_utils_gtk.cc
+index 8c6f455..f7f3a0a 100644
+--- a/ui/gfx/skia_utils_gtk.cc
++++ b/ui/gfx/skia_utils_gtk.cc
+@@ -1,4 +1,4 @@
+-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
++// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+@@ -22,9 +22,9 @@ SkColor GdkColorToSkColor(GdkColor color) {
+ GdkColor SkColorToGdkColor(SkColor color) {
+   GdkColor gdk_color = {
+       0,
+-      SkColorGetR(color) * kSkiaToGDKMultiplier,
+-      SkColorGetG(color) * kSkiaToGDKMultiplier,
+-      SkColorGetB(color) * kSkiaToGDKMultiplier
++      static_cast<guint16>(SkColorGetR(color) * kSkiaToGDKMultiplier),
++      static_cast<guint16>(SkColorGetG(color) * kSkiaToGDKMultiplier),
++      static_cast<guint16>(SkColorGetB(color) * kSkiaToGDKMultiplier)
+   };
+   return gdk_color;
+ }
+diff --git a/webkit/glue/webkit_glue.gypi b/webkit/glue/webkit_glue.gypi
+index 0f3e0c6..ea477f8 100644
+--- a/webkit/glue/webkit_glue.gypi
++++ b/webkit/glue/webkit_glue.gypi
+@@ -12,6 +12,12 @@
+       }],
+     ],
+   },
++  'target_defaults': {
++     # Disable narrowing-conversion-in-initialization-list warnings in that we
++     # do not want to fix it in data file "webcursor_gtk_data.h".
++     'cflags+': ['-Wno-narrowing'],
++     'cflags_cc+': ['-Wno-narrowing'],
++  },
+   'targets': [
+     {
+       'target_name': 'webkit_resources',
+diff --git a/webkit/plugins/ppapi/ppb_flash_impl.cc b/webkit/plugins/ppapi/ppb_flash_impl.cc
+index 668a8c1..9290ba0 100644
+--- a/webkit/plugins/ppapi/ppb_flash_impl.cc
++++ b/webkit/plugins/ppapi/ppb_flash_impl.cc
+@@ -124,9 +124,10 @@ PP_Bool PPB_Flash_Impl::DrawGlyphs(PP_Instance instance,
+   SkAutoCanvasRestore acr(canvas, true);
+ 
+   // Clip is applied in pixels before the transform.
+-  SkRect clip_rect = { clip->point.x, clip->point.y,
+-                       clip->point.x + clip->size.width,
+-                       clip->point.y + clip->size.height };
++  SkRect clip_rect = { SkIntToScalar(clip->point.x),
++                       SkIntToScalar(clip->point.y),
++                       SkIntToScalar(clip->point.x + clip->size.width),
++                       SkIntToScalar(clip->point.y + clip->size.height) };
+   canvas->clipRect(clip_rect);
+ 
+   // Convert & set the matrix.
+diff --git a/webkit/plugins/ppapi/ppb_video_capture_impl.cc b/webkit/plugins/ppapi/ppb_video_capture_impl.cc
+index f1eb12c..9a00155 100644
+--- a/webkit/plugins/ppapi/ppb_video_capture_impl.cc
++++ b/webkit/plugins/ppapi/ppb_video_capture_impl.cc
+@@ -118,9 +118,9 @@ void PPB_VideoCapture_Impl::OnDeviceInfoReceived(
+     media::VideoCapture* capture,
+     const media::VideoCaptureParams& device_info) {
+   PP_VideoCaptureDeviceInfo_Dev info = {
+-    device_info.width,
+-    device_info.height,
+-    device_info.frame_per_second
++    static_cast<uint32_t>(device_info.width),
++    static_cast<uint32_t>(device_info.height),
++    static_cast<uint32_t>(device_info.frame_per_second)
+   };
+   ReleaseBuffers();
+ 

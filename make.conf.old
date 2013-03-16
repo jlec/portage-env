@@ -1,0 +1,165 @@
+PORTROOT="/var/cache/portage"
+#PORTDIR="${PORTROOT}/tree"
+PORTDIR="/var/cache/portage/tree"
+OVERLAY_BASE="/local/overlays"
+PORTDIR_OVERLAY="
+	${OVERLAY_BASE}/sunrise-reviewed
+	${OVERLAY_BASE}/bicatali
+	${OVERLAY_BASE}/betagarden
+	${OVERLAY_BASE}/dummy
+	${OVERLAY_BASE}/neurogeek
+	${OVERLAY_BASE}/sci
+	${OVERLAY_BASE}/gen2pi
+	${OVERLAY_BASE}/lh/ebuilds
+	${OVERLAY_BASE}/g-ctan"
+DISTDIR="${PORTROOT}/distfiles"
+PORTAGE_RO_DISTDIRS="/mnt/Big/Software"
+PKGDIR="${PORTROOT}/packages"
+ESVN_STORE_DIR="${PORTROOT}/portage-vcs/svn-src/"
+EGIT_STORE_DIR="${PORTROOT}/portage-vcs/git-src/"
+EBZR_STORE_DIR="${PORTROOT}/portage-vcs/bzr-src/"
+EHG_STORE_DIR="${PORTROOT}/portage-vcs/hg-src/"
+EXTRA_TMPDIR="${PORTROOT}/tmpdir"
+
+DOC_SYMLINKS_DIR="/var/www/localhost/htdocs/portage"
+
+ACCEPT_KEYWORDS="amd64 ~amd64"
+
+PHP_TARGETS=""
+RUBY_TARGETS="ruby19"
+#RUBY_TARGETS="jruby"
+
+GRUB_PLATFORMS="efi-64"
+
+PYTHON_COLORS="true"
+CMAKE_VERBOSE=ON
+TEST_VERBOSE="1"
+VERBOSE="1"
+
+# echo "int main() { return 0; }" | gcc -march=native -v -E - 2>&1 | grep march
+#gcc-4.6
+# -march=corei7-avx -mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-tbm -mavx -msse4.2 -msse4.1 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192 -mtune=corei7-avx
+# gcc-4.7
+# -march=corei7-avx -mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mavx -mno-avx2 -msse4.2 -msse4.1 -mno-lzcnt --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192 -mtune=corei7-avx
+# gcc-4.7.2
+# -march=corei7-avx -mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mavx -mno-avx2 -msse4.2 -msse4.1 -mno-lzcnt -mno-rdrnd -mno-f16c -mno-fsgsbase --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192 -mtune=corei7-avx
+
+BASE1="-O2 -pipe"
+BASE1a="-ftracer"
+BASE2="-march=corei7-avx -mtune=corei7-avx"
+BASE2a="-mcx16 -msahf -mno-movbe -maes -mpclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mavx -mno-avx2 -msse4.2 -msse4.1 -mno-lzcnt -mno-rdrnd -mno-f16c -mno-fsgsbase"
+BASE3="--param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=8192"
+BASE4="-frecord-gcc-switches -g"
+BASEFLAGS="${BASE1} ${BASE1a} ${BASE2} ${BASE2a} ${BASE3} ${BASE4}"
+#CFLAGS_WARN="-Wimplicit-function-declaration -Wmissing-include-dirs"
+#CXXFLAGS_WARN="-Wenum-compare -Wmissing-include-dirs"
+CFLAGS_WARN="-Wimplicit-function-declaration"
+CXXFLAGS_WARN="-Wenum-compare"
+
+CFLAGS="${BASEFLAGS} ${CFLAGS_WARN}"
+CXXFLAGS="${BASEFLAGS} ${CXXFLAGS_WARN}"
+
+FFLAGS="${BASEFLAGS}"
+FCFLAGS="${BASEFLAGS}"
+LDFLAGS="${LDFLAGS} -Wl,-O1 -Wl,--hash-style=gnu -Wl,--sort-common"
+CHOST="x86_64-pc-linux-gnu"
+F77="x86_64-pc-linux-gnu-gfortran"
+FC="x86_64-pc-linux-gnu-gfortran"
+FORTRANC="gfortran"
+
+ACCEPT_LICENSE="*"
+
+PYTHON_TARGETS="python2_6 python2_7 python3_1 python3_2 python3_3 pypy1_9 pypy2_0"
+USE_PYTHON="2.6 2.7 3.1 3.2 3.3 2.7-pypy-1.9 2.7-pypy-2.0"
+PYTHON_SINGLE_TARGET="python2_7"
+
+PORT_LOGDIR="/var/log/portage"
+
+I_KNOW_WHAT_I_AM_DOING="yes"
+LD_AS_NEEDED="1"
+
+OMP_NUM_THREADS="8"
+MAXMEM="4096"
+MAXATOMS="100000"
+
+#MAKEOPTS="V=1 -j12 -l12"
+MAKEOPTS="-j16 -l12"
+FEATURES="buildsyspkg multilib-strict collision-protect protect-owned parallel-fetch noinfo splitdebug sign split-log parallel-install"
+FEATURES="${FEATURES} -config-protect-if-modified"
+FEATURES="${FEATURES} userpriv usersync usersandbox userfetch"
+FEATURES="${FEATURES} ccache"
+FEATURES="${FEATURES} compressdebug"
+FEATURES="${FEATURES} metadata-transfer"
+
+LINGUAS="en"
+
+CCACHE_SIZE="4G"
+CCACHE_DIR="/local/ccache"
+
+#EMERGE_DEFAULT_OPTS="--jobs=12 --load-average=12"
+EMERGE_DEFAULT_OPTS="--jobs=4 --load-average=12"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} -t --keep-going --autounmask-write --autounmask --quiet-build=n"
+QUICKPKG_DEFAULT_OPTS="--umask=0011 --include-config=y"
+EBUILD_DEFAULT_OPTS="--skip-manifest"
+
+CONFIG_PROTECT="/usr/share/nano/ /usr/share/eselect/"
+
+PORTAGE_COMPRESS="xz"
+PORTAGE_COMPRESS_FLAGS="-z -e -9 -v"
+
+VIDEO_CARDS="nvidia"
+#VIDEO_CARDS="nouveau"
+#INPUT_DEVICES="keyboard mouse evdev"
+INPUT_DEVICES="evdev"
+ALSA_CARDS="hda-intel"
+DRACUT_MODULES="plymouth"
+SANE_BACKENDS=""
+
+PORTAGE_ELOG_SYSTEM="custom:* save echo"
+PORTAGE_ELOG_COMMAND="/usr/bin/gentwoo '${PACKAGE}' '${LOGFILE}'"
+PORTAGE_ELOG_CLASSES="warn error log"
+PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"
+
+SYNC="rsync://rsync.gentoo.org/gentoo-portage"
+#SYNC="rsync://rsync.j-schmitz.net/gentoo-portage"
+
+GENTOO_MIRRORS="
+/mnt/tmpfs/
+http://gentoo.j-schmitz.net/mirror/
+ftp://sunsite.informatik.rwth-aachen.de/pub/Linux/gentoo
+ftp://ftp.tu-clausthal.de/pub/linux/gentoo/"
+#ftp://ftp.gentoo.mesh-solutions.com/gentoo/
+
+
+PORTAGE_REPO_DUPLICATE_WARN="0"
+
+#FETCHCOMMAND="/usr/bin/axel -a -o \${DISTDIR}/\${FILE} \${URI}"
+#FETCHCOMMAND="aria2c --check-certificate=false -o \${DISTDIR}/\${FILE} \${URI}"
+#RESUMECOMMAND="aria2c -c true --check-certificate=false -o \${DISTDIR}/\${FILE} \${URI}"
+#RESUMECOMMAND="${FETCHCOMMAND}"
+#FETCHCOMMANDWRAPPER_OPTIONS="--check-certificate false"
+#source /usr/share/fetchcommandwrapper/make.conf
+
+#PORTAGE_ECLASS_WARNING_ENABLE="0"
+
+#PORTAGE_IONICE_COMMAND="ionice -c 3 -p \${PID}"
+#PORTAGE_NICENESS="19"
+
+PORTAGE_GPG_DIR="~/.gnupg/"
+#PORTAGE_GPG_KEY="70EB7916"
+PORTAGE_GPG_KEY="8009D6F070EB7916"
+PORTAGE_GPG_SIGNING_COMMAND="gpg2 --sign --clearsign --yes --digest-algo SHA512 --default-key \"\${PORTAGE_GPG_KEY}\" --homedir \"\${PORTAGE_GPG_DIR}\" \"\${FILE}\""
+
+QEMU_SOFTMMU_TARGETS="i386 x86_64 arm armeb"
+QEMU_USER_TARGETS="i386 x86_64 arm armeb"
+
+USE="X alsa avx bash-completion branding cairo caps dbus gif gmp gnome \
+     gnome-keyring gstreamer gtk icu jpeg jpeg2k mmxext network-cron \
+     nsplugin numa opengl openmp png pulseaudio qt3support raw smp sse3 sse4 \
+     sse4_1 sse4a startup-notification threads tiff truetype unicode vaapi \
+     vdpau xinerama -3dnow -3dnowext -kde -networkmanager -qt4"
+
+EGIT_OPTIONS="-v"
+
+#CAMERAS=""
+LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer pdfimport scripting-javascript wiki-publisher"
