@@ -1,11 +1,12 @@
+dev-lang/python:3.3
+<dev-lang/v8-9999
+dev-vcs/rapidsvn
 sci-chemistry/burrow-owl
 sci-chemistry/coot
 sci-chemistry/pymol
+>=sci-libs/blas-reference-20110418
+sys-apps/hwids
 sys-apps/portage 
 sys-devel/gcc
+sys-process/itop
 www-client/chromium:0
->=sci-libs/blas-reference-20110418
-<dev-lang/v8-9999
-dev-vcs/rapidsvn
-sys-apps/hwids
-dev-lang/python:3.3
