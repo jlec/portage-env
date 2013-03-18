@@ -11,6 +11,7 @@ net-nds/gq **
 sys-apps/hwids **
 <sys-apps/portage-9999 **
 sys-devel/gcc **
+sys-process/itop **
 www-client/chromium **
 www-client/google-chrome **
 www-client/pybugz **

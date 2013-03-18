@@ -8,7 +8,9 @@ app-arch/lbzip2 symlink
 app-arch/libarchive xattr
 app-arch/p7zip -X rar wxwindows
 app-arch/pigz symlink
+app-arch/tar xattr
 app-arch/unzip natspec
+app-backup/deja-dup nautilus
 app-benchmarks/bootchart2 svg
 app-benchmarks/bootchart acct java
 app-benchmarks/i7z -X
@@ -22,13 +24,12 @@ app-crypt/seahorse-plugins applet libnotify
 app-doc/abs-guide pdf
 app-doc/tldp-howto -html -pdf htmlsingle
 app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
-app-editors/gedit spell zeitgeist python
+app-editors/gedit python spell zeitgeist
 app-emulation/libvirt -pcap -vde -virt-network caps nfs parted python qemu sasl udev virtualbox
 app-emulation/lxc examples
-app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr tci
+app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
 app-emulation/virt-manager sasl
 app-emulation/virtualbox -alsa additions extensions qt4
-app-emulation/wine -cups -ldap
 app-i18n/ibus dconf
 app-misc/byobu screen
 app-misc/mc -ncurses slang
@@ -52,7 +53,7 @@ app-portage/layman git subversion
 app-portage/pfl network-cron
 app-text/acroread -ldap -nsplugin
 app-text/aspell linguas_de
-app-text/evince djvu -dvi t1lib
+app-text/evince -dvi djvu t1lib
 app-text/ghostscript-gpl cups
 app-text/hunspell linguas_de
 app-text/lcdf-typetools kpathsea
@@ -66,11 +67,11 @@ app-text/texlive-core -doc
 app-text/texlive -doc -indy -xindy dvipdfm extra graphics linguas_en_GB pstricks publishers science tex4ht xml
 dev-db/hsqldb java6
 dev-db/mysql -perl minimal
-dev-db/sqlite extensions fts3 secure-delete tcl unlock-notify
+dev-db/sqlite -tcl extensions fts3 secure-delete unlock-notify
 dev-games/cegui devil opengl
 dev-java/antlr java
 dev-java/glazedlists java5
-dev-java/log4j javamail
+dev-java/log4j -javamail
 dev-java/swt -xulrunner
 dev-lang/path64 -assembler
 dev-lang/perl ithreads
@@ -80,9 +81,9 @@ dev-lang/R lapack
 dev-lang/spidermonkey threadsafe
 dev-lang/swig ccache
 dev-lang/tcl threads
-dev-lang/tk threads -truetype
+dev-lang/tk -truetype threads
 dev-libs/apr-util ldap openssl
-dev-libs/boost -mpi expat python static-libs threads
+dev-libs/boost -mpi -static-libs expat python threads
 dev-libs/cyrus-sasl -berkdb -ldap -sqlite crypt
 dev-libs/elfutils lzma
 dev-libs/folks -tracker socialweb
@@ -101,7 +102,7 @@ dev-perl/Text-CSV_XS -doc
 dev-perl/Text-Iconv -doc
 dev-perl/XML-Filter-BufferText -doc
 dev-python/imaging tk
-dev-python/ipython -gnuplot -wxwidgets
+dev-python/ipython -gnuplot -wxwidgets matplotlib
 dev-python/matplotlib tk
 dev-python/numpy lapack
 dev-python/pycairo svg
@@ -127,7 +128,7 @@ dev-ruby/ruby-elf -jruby
 dev-ruby/rubygems ruby_targets_ruby19
 dev-scheme/guile discouraged networking threads
 dev-tcltk/tktreectrl shellicon
-dev-util/anjuta devhelp glade graphviz subversion
+dev-util/anjuta devhelp glade graphviz subversion vala
 dev-util/cmake qt4
 dev-util/devhelp gedit
 dev-util/glade doc python
@@ -145,10 +146,10 @@ gnome-base/gnome-control-center -cheese -networkmanager socialweb
 gnome-base/gnome-settings-daemon -short-touchpad-timeout libnotify policykit
 gnome-base/gnome-shell -networkmanager
 gnome-base/gnome-vfs samba
-gnome-base/gvfs archive bluetooth cdda fuse gdu ios samba udisks
+gnome-base/gvfs afp archive bluetooth cdda fuse gdu ios samba udisks
 gnome-base/libgnomecanvas glade
 gnome-base/nautilus -tracker exif
-gnome-extra/evolution-data-server -gnome-online-accounts kerberos ldap weather
+gnome-extra/evolution-data-server -gnome-online-accounts -kerberos ldap weather
 gnome-extra/evolution-rss webkit
 gnome-extra/gnome-games guile
 gnome-extra/gnome-media aac flac
@@ -157,9 +158,8 @@ gnome-extra/sushi office
 gnome-extra/zeitgeist-datahub download
 gnome-extra/zeitgeist-datasources chromium firefox
 gnome-extra/zeitgeist-extensions -fts
-gnome-extra/zeitgeist extentions fts passiv plugins
+gnome-extra/zeitgeist extensions fts passiv plugins
 gnome-extra/zenity libnotify
-gnutlsnet-misc/curl
 mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
 mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar smime smtp ssl tokyocabinet
 mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf lightning startup-notification system-sqlite
@@ -169,7 +169,7 @@ media-fonts/terminus-font bolddiag pcf psf
 media-fonts/texcm-ttf -doc
 media-gfx/gimp aalib dbus exif lcms mng pdf postscript svg udev wmf xpm
 media-gfx/graphicsmagick q16
-media-gfx/gthumb -gphoto2 -slideshow exif
+media-gfx/gthumb -gphoto2 exif -slideshow svg
 media-gfx/imagemagick autotrace corefonts fftw fontconfig jpeg2k lqr opencl postscript q32 svg webp xml
 media-gfx/inkscape lcms mmx postscript
 media-gfx/natural-gentoo build
@@ -177,6 +177,8 @@ media-gfx/ngplant lua
 media-gfx/openvrmlv nsplugin
 media-gfx/pstoedit imagemagick plotutils
 media-gfx/synfig ffmpeg
+media-gfx/ufraw contrast fits gimp timezone
+media-libs/alsa-lib alisp
 media-libs/chromaprint tools
 media-libs/fontconfig abi_x86_32
 media-libs/freetype infinality kpathsea lcdfilter abi_x86_32
@@ -185,11 +187,12 @@ media-libs/gegl exif ffmpeg svg
 media-libs/gst-plugins-base theora
 media-libs/imlib -gtk
 media-libs/lcms python
+media-libs/libaacplus fftw
 media-libs/libafterimage -cvg svg
 media-libs/libcanberra udev
-media-libs/libgnome-media-profiles mp3
+media-libs/libgnome-media-profiles aac mp3
 media-libs/libgphoto2 exif
-media-libs/libgpod ios mono
+media-libs/libgpod -mono ios
 media-libs/libpng apng
 media-libs/libsdl xv
 media-libs/mesa g3dvl gallium llvm motif openvg gles2
@@ -197,7 +200,8 @@ media-libs/sdl-mixer mikmod
 media-libs/tiff lzma
 media-libs/x264 threads
 media-plugins/audacious-plugins mad vorbis wma
-media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg lame mad mpeg ogg taglib theora vorbis xv mp3
+media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg lame mad mp3 mpeg ogg taglib theora vorbis xv
+media-plugins/gst-plugins-v4l2 udev
 media-sound/alsa-tools fltk
 media-sound/audacious dbus
 media-sound/banshee aac boo cdda encode flac ipod karma mtp podcast
@@ -209,14 +213,14 @@ media-sound/lastfmplayer ipod
 media-sound/lastfm-ripper tagwriting
 media-sound/picard cdda coverart ffmpeg
 media-sound/streamripper vorbis
-media-video/ffmpeg aac aacplus libv4l mp3 v4l x264
+media-video/ffmpeg aac aacplus cdio libv4l mp3 network openssl opus schroedinger threads v4l x264
 media-video/gpac a52
 media-video/h264enc aac dvd lame mp4
 media-video/libav aac avx fdk mp3 x264
 media-video/mplayer -dxr3 -libmpeg2 amr faac md5sum mng
 media-video/recordmydesktop jack
 media-video/totem -gnome -hal -nsplugin -python -vorbis -youtube
-media-video/vlc -directfb -dts -httpd -kde -oss -ssl -svga a52 aac cdda cddb cdio dbus dvd fbcon ffmpeg flac freetype gtk hal libnotify mmx mozilla mp3 mpeg nsplugin ogg qt4 rtsp sdl sqlite stream svg theora udev unicode v4l2 vcd vorbis win32codecs wxwindows x264 xml xv xvid
+media-video/vlc -directfb -dts -httpd -kde -oss -ssl -svga a52 aac cdda cddb cdio dbus dvd fbcon ffmpeg flac freetype gtk hal libnotify mmx mozilla mp3 mpeg nsplugin ogg qt4 rtsp sdl sqlite stream svg theora udev unicode v4l v4l2 vcd vorbis win32codecs wxwindows x264 xml xv xvid
 net-analyzer/munin -cgi dhcpd http
 net-analyzer/nagios-nrpe command-args ssl
 net-analyzer/nagios-plugins nagios-ping nagios-ssh snmp
@@ -224,19 +228,21 @@ net-analyzer/netcat crypt
 net-analyzer/net-snmp -lm_sensors
 net-analyzer/rrdtool -tcl perl
 net-analyzer/wireshark gcrypt smi
-net-fs/autofs ldap
-net-fs/nfs-utils -nfsv3 nfsidmap nfsv41
-net-fs/samba -cups -ldap -server -swat acl
+net-dns/avahi gtk3 utils
+net-fs/autofs -ldap
+net-fs/netatalk -avahi
+net-fs/nfs-utils -nfsv3 nfsdcld nfsidmap nfsv41
+net-fs/samba -cups -ldap acl server swat syslog
 net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
 net-im/pidgin -ncurses gnutls gstreamer python spell
 net-im/skype qt-static
-net-libs/gtk-vnc sasl gtk3 python
+net-libs/gtk-vnc gtk3 python sasl
 net-libs/libnfsidmap -ldap
 net-libs/libnice gstreamer
 net-libs/libsocialweb -networkmanager vala
 net-libs/libsoup gnome
 net-libs/libsoup-gnome gnome
-net-libs/neon linguas_de
+net-libs/neon -linguas_de
 net-libs/webkit-gtk -debug -pango gstreamer
 net-libs/xulrunner -java custom-optimization ipc libnotify system-sqlite
 net-misc/aria2 scripts xmlrpc
@@ -251,14 +257,14 @@ net-misc/spice-gtk -gstreamer python sasl
 net-misc/vde pcap
 net-misc/vinagre rdp
 net-misc/wicd -pm-utils libnotify
-net-nds/openldap -cxx -gnutls -minimal -sasl crypt perl samba syslog
+net-nds/openldap -cxx -gnutls -minimal -perl -sasl crypt samba syslog
 net-p2p/rtorrent color
-net-print/cups -java -ldap -samba X acl dbus gnutls jpeg linguas_en pam perl png ppds python ssl tiff
+net-print/cups -gnutls -java -ldap -python -samba X acl dbus jpeg linguas_en pam perl png ppds ssl tiff
 net-print/hplip cupsddk minimal
 net-wireless/aircrack-ng wifi
 net-wireless/bluez -alsa -cups usb
 net-wireless/bluez-utils usb
-net-wireless/wpa_supplicant qt4 dbus
+net-wireless/wpa_supplicant dbus qt4
 sci-biology/bioperl -db sqlite
 sci-biology/embassy-cbstools X pdf png
 sci-biology/embassy-domainatrix X pdf png
@@ -282,7 +288,7 @@ sci-biology/fasta -icc sse2
 sci-biology/rebase -emboss
 sci-chemistry/almost -mpi -sse
 sci-chemistry/ambertools -mpi -scalapack X openmp
-sci-chemistry/apbs -mpi arpack blas fetk tinker tk python
+sci-chemistry/apbs -mpi arpack blas fetk python tinker tk
 sci-chemistry/avogadro glsl
 sci-chemistry/ballview gsl
 sci-chemistry/ccp4 -balbes arpwarp
@@ -309,17 +315,18 @@ sci-libs/blas-goto threads
 sci-libs/cctbx -minimal -threads openmp
 sci-libs/cholmod metis
 sci-libs/fftw -mpi avx quad threads
-sci-libs/gdal geos
+sci-libs/gdal -geos
 sci-libs/geos python
 sci-libs/hdf5 -threads
 sci-libs/libcmatrix -atlas threads
 sci-libs/mkl -mpi fftw fortran95 int64
-sci-libs/netcdf fortran
+sci-libs/netcdf -hdf5 fortran
 sci-libs/scip fftw
 sci-libs/scipy umfpack
 sci-libs/starparse guile
 sci-libs/vtk -mpi R boost cg ffmpeg patented python qt4 tcl theora tk
 sci-mathematics/pari gmp
+sci-physics/root c++0x
 sci-visualization/gnuplot gd latex pdf plotutils wxwidgets wxwindows
 sci-visualization/grace fftw
 sci-visualization/mayavi qt4
@@ -332,9 +339,10 @@ sys-apps/hal -crypt consolekit
 sys-apps/hwloc -X -cairo
 sys-apps/irqbalance caps
 sys-apps/kexec-tools lzma
-sys-apps/man-db -berkdb
-sys-apps/pciutils -zlib
+sys-apps/man-db -gdbm berkdb
+sys-apps/pciutils zlib
 sys-apps/portage -doc
+sys-apps/shadow xattr
 sys-apps/smartmontools minimal
 sys-apps/texinfo -doc
 sys-apps/util-linux crypt udev
@@ -348,14 +356,10 @@ sys-cluster/maui pbs
 sys-cluster/mpich2 fortran mpi-threads romio threads
 sys-cluster/openmpi -threads
 sys-cluster/torque crypt tk
-sys-devel/gcc:3.4 -gcj
-sys-devel/gcc:4.1 -cxx
-sys-devel/gcc:4.1 nocxx
-sys-devel/gcc:4.6 lto
-sys-devel/gcc:4.7 multislot
-sys-devel/gcc -gtk -libffi fortran gcj graphite multilib
+sys-devel/gcc -gtk -libffi fortran -gcj graphite multilib lto
 sys-devel/gdb expat python
 sys-devel/gettext -doc
+sys-devel/llvm gold
 sys-devel/patch xattr
 sys-fs/aufs2 inotify kernel-patch nfs
 sys-fs/aufs3 inotify kernel-patch nfs
@@ -363,7 +367,7 @@ sys-fs/hfsutils tcl tk
 sys-fs/ntfs3g ntfsprogs
 sys-fs/quota netlink rpc
 sys-fs/udev edd extras gudev hwdb keymap
-sys-fs/udisks -crypt
+sys-fs/udisks crypt
 sys-kernel/lh-sources symlink
 sys-libs/glibc glibc-omitfp multilib
 sys-libs/ncurses tinfo
@@ -375,13 +379,13 @@ sys-process/htop cgroup
 sys-process/lsof rpc
 virtual/ffmpeg X encode mp3 threads x264
 virtual/latex-base -doc
-virtual/mpi romio fortran
+virtual/mpi fortran romio
 virtual/mysql minimal
 virtual/perl-Locale-Maketext-Simple -doc
 virtual/poppler-glib cairo
 virtual/tex-base -doc
 virtual/texi2dvi -doc
-virtual/udev -keymap
+virtual/udev -keymap gudev hwdb
 www-apps/swish-e -mp3 -pdf -perl
 www-client/chromium custom-cflags system-v8
 www-client/firefox custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-sqlite
@@ -449,4 +453,5 @@ x11-terms/rxvt-unicode -afterimage -vanilla -wcwidth -xterm-color 256-color perl
 x11-terms/terminator libnotify
 x11-themes/gentoo-artwork offensive
 x11-themes/gtk-engines-murrine -themes
+x11-themes/zukitwo gnome-shell
 x11-wm/fluxbox imlib

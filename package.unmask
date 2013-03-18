@@ -8,4 +8,5 @@ sci-chemistry/pymol
 sys-apps/hwids
 sys-apps/portage 
 sys-devel/gcc
+sys-process/itop
 www-client/chromium:0
