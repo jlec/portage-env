@@ -11,26 +11,26 @@ app-arch/pigz symlink
 app-arch/tar xattr
 app-arch/unzip natspec
 app-backup/deja-dup nautilus
-app-benchmarks/bootchart2 svg
 app-benchmarks/bootchart acct java
+app-benchmarks/bootchart2 svg
 app-benchmarks/i7z -X
 app-cdr/brasero -totem -tracker cdrtools mp3
 app-cdr/dvd95 mpeg
 app-crypt/johntheripper -mpi custom-cflags
->=app-crypt/libsecret-0.12 vala
+app-crypt/libsecret vala
 app-crypt/pinentry gtk
 app-crypt/seahorse dbus gnome-keyring libnotify
 app-crypt/seahorse-plugins applet libnotify
 app-doc/abs-guide pdf
 app-doc/tldp-howto -html -pdf htmlsingle
-app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
 app-editors/gedit python spell zeitgeist
+app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
 app-emulation/libvirt -pcap -vde -virt-network caps nfs parted python qemu sasl udev virtualbox
 app-emulation/lxc examples
 app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
 app-emulation/virt-manager sasl
 app-emulation/virtualbox -alsa additions extensions qt4
->=app-i18n/ibus-1.4.99.20121006 dconf
+app-i18n/ibus dconf
 app-misc/byobu screen
 app-misc/mc -ncurses slang
 app-misc/pax-utils caps
@@ -40,7 +40,7 @@ app-misc/unfoo -minimal
 app-mobilephone/gnokii bluetooth ical sms usb
 app-mobilephone/obex-data-server usb
 app-office/libreoffice bluetooth gtk3 java jemalloc pdfimport python svg vba webdav
-app-office/libreoffice-l10n -linguas_de
+app-office/libreoffice-l10n linguas_de
 app-office/lyx latex monolithic-build subversion
 app-office/openoffice -ldap dbus gstreamer java linguas_en_GB linguas_en_US
 app-office/scribus cairo hunspell podofo
@@ -59,12 +59,12 @@ app-text/hunspell linguas_de
 app-text/lcdf-typetools kpathsea
 app-text/nopaste -X
 app-text/passivetex -doc
-app-text/poppler-bindings cairo gtk
 app-text/poppler cairo glib jpeg png qt4 utils
+app-text/poppler-bindings cairo gtk
 app-text/tesseract linguas_de linguas_en
 app-text/texi2html -doc
-app-text/texlive-core -doc
 app-text/texlive -doc -indy -xindy dvipdfm extra graphics linguas_en_GB pstricks publishers science tex4ht xml
+app-text/texlive-core -doc
 dev-db/hsqldb java6
 dev-db/mysql -perl minimal
 dev-db/sqlite -tcl extensions fts3 secure-delete unlock-notify
@@ -73,11 +73,11 @@ dev-java/antlr java
 dev-java/glazedlists java5
 dev-java/log4j -javamail
 dev-java/swt -xulrunner
+dev-lang/R lapack
 dev-lang/path64 -assembler
 dev-lang/perl ithreads
 dev-lang/php gd
 dev-lang/python sqlite tk
-dev-lang/R lapack
 dev-lang/spidermonkey threadsafe
 dev-lang/swig ccache
 dev-lang/tcl threads
@@ -89,17 +89,19 @@ dev-libs/elfutils lzma
 dev-libs/folks -tracker socialweb
 dev-libs/keybinder python
 dev-libs/libf2c static
+dev-libs/libpthread-stubs abi_x86_32
 dev-libs/libwiimote force tilt
 dev-libs/libxml2 python
 dev-libs/maloc -mpi
 dev-libs/nss utils
 dev-libs/openobex bluetooth usb
-dev-libs/xapian-bindings python
 dev-libs/xapian -sse
+dev-libs/xapian-bindings python
 dev-perl/Locale-gettext -doc
 dev-perl/Text-CSV_XS -doc
 dev-perl/Text-Iconv -doc
 dev-perl/XML-Filter-BufferText -doc
+dev-python/PyQt4 assistant dbus sql svg
 dev-python/imaging tk
 dev-python/ipython -gnuplot -wxwidgets matplotlib
 dev-python/matplotlib tk
@@ -107,20 +109,22 @@ dev-python/numpy lapack
 dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
 dev-python/pypy sqlite
-dev-python/PyQt4 assistant dbus sql svg
 dev-python/pyside script sql svg webkit xmlpatterns
 dev-python/qscintilla-python qt4
 dev-python/rdflib sqlite
-dev-python/sphinx -latex
+dev-python/sphinx latex
 dev-python/traitsgui qt4 wxwidgets
-dev-qt/qtgui gtkstyle mng
->=dev-qt/qthelp-4.8.4 compat
->=dev-ruby/json-1.6.3 ruby_targets_ruby19
->=dev-ruby/racc-1.4.7 ruby_targets_ruby19
->=dev-ruby/rake-0.9.2.2 ruby_targets_ruby19
->=dev-ruby/rdoc-3.12 ruby_targets_ruby19
+dev-qt/qtcore glib qt3support
+dev-qt/qtgui -egl dbus gtkstyle mng qt3support
+dev-qt/qthelp compat
+dev-qt/qtopengl -egl
+dev-qt/qtsql qt3support
+dev-ruby/json ruby_targets_ruby19
+dev-ruby/racc ruby_targets_ruby19
+dev-ruby/rake ruby_targets_ruby19
+dev-ruby/rdoc ruby_targets_ruby19
 dev-ruby/ruby-elf -jruby
->=dev-ruby/rubygems-1.8.15 ruby_targets_ruby19
+dev-ruby/rubygems ruby_targets_ruby19
 dev-scheme/guile discouraged networking threads
 dev-tcltk/tktreectrl shellicon
 dev-util/anjuta devhelp glade graphviz subversion vala
@@ -142,6 +146,7 @@ gnome-base/gnome-settings-daemon -short-touchpad-timeout libnotify policykit
 gnome-base/gnome-shell -networkmanager
 gnome-base/gnome-vfs samba
 gnome-base/gvfs afp archive bluetooth cdda fuse gdu gphoto2 ios samba udisks
+gnome-base/libgnomecanvas glade
 gnome-base/nautilus -tracker exif
 gnome-extra/evolution-data-server -kerberos -ldap gnome-online-accounts weather
 gnome-extra/evolution-rss webkit
@@ -149,9 +154,9 @@ gnome-extra/gnome-games guile
 gnome-extra/gnome-media aac flac
 gnome-extra/gnome-screensaver libnotify
 gnome-extra/sushi office
+gnome-extra/zeitgeist extensions fts passiv plugins
 gnome-extra/zeitgeist-datahub download
 gnome-extra/zeitgeist-datasources chromium firefox
-gnome-extra/zeitgeist extensions extentions fts passiv plugins
 gnome-extra/zeitgeist-extensions -fts
 gnome-extra/zenity libnotify
 mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
@@ -174,7 +179,8 @@ media-gfx/synfig ffmpeg
 media-gfx/ufraw contrast fits gimp timezone
 media-libs/alsa-lib alisp
 media-libs/chromaprint tools
-media-libs/freetype infinality kpathsea lcdfilter
+media-libs/fontconfig abi_x86_32
+media-libs/freetype abi_x86_32 infinality kpathsea lcdfilter
 media-libs/gd fontconfig
 media-libs/gegl exif ffmpeg svg
 media-libs/gst-plugins-base theora
@@ -185,15 +191,15 @@ media-libs/libafterimage -cvg svg
 media-libs/libcanberra udev
 media-libs/libgnome-media-profiles aac mp3
 media-libs/libgphoto2 exif
-media-libs/libgpod -mono ios
+media-libs/libgpod ios mono
 media-libs/libpng apng
 media-libs/libsdl xv
-media-libs/mesa g3dvl gallium gles2 llvm motif
+media-libs/mesa g3dvl gallium gles2 llvm motif openvg
 media-libs/sdl-mixer mikmod
 media-libs/tiff lzma
 media-libs/x264 threads
 media-plugins/audacious-plugins mad vorbis wma
-media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg flac lame mad mp3 mpeg ogg taglib theora vorbis xv
+media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg lame mad mp3 mpeg ogg taglib theora vorbis xv
 media-plugins/gst-plugins-v4l2 udev
 media-sound/alsa-tools fltk
 media-sound/audacious dbus
@@ -202,8 +208,8 @@ media-sound/easytag mp3
 media-sound/exaile -libnotify cddb mad
 media-sound/grip vorbis
 media-sound/guayadeque indicate ipod
-media-sound/lastfmplayer ipod
 media-sound/lastfm-ripper tagwriting
+media-sound/lastfmplayer ipod
 media-sound/picard cdda coverart ffmpeg
 media-sound/streamripper vorbis
 media-video/ffmpeg aac aacplus cdio libv4l mp3 network openssl opus schroedinger threads v4l x264
@@ -217,9 +223,9 @@ media-video/vlc -directfb -dts -httpd -kde -oss -ssl -svga a52 aac cdda cddb cdi
 net-analyzer/munin -cgi dhcpd http
 net-analyzer/nagios-nrpe command-args ssl
 net-analyzer/nagios-plugins nagios-ping nagios-ssh snmp
-net-analyzer/netcat crypt
 net-analyzer/net-snmp -lm_sensors
-net-analyzer/rrdtool perl tcl
+net-analyzer/netcat crypt
+net-analyzer/rrdtool -tcl perl
 net-analyzer/wireshark gcrypt smi
 net-dns/avahi gtk3 utils
 net-fs/autofs -ldap
@@ -259,6 +265,7 @@ net-wireless/bluez -alsa -cups usb
 net-wireless/bluez-utils usb
 net-wireless/wpa_supplicant dbus qt4
 sci-biology/bioperl -db sqlite
+sci-biology/embassy X pdf png
 sci-biology/embassy-cbstools X pdf png
 sci-biology/embassy-domainatrix X pdf png
 sci-biology/embassy-domalign X pdf png
@@ -275,7 +282,6 @@ sci-biology/embassy-signature X pdf png
 sci-biology/embassy-structure X pdf png
 sci-biology/embassy-topo X pdf png
 sci-biology/embassy-vienna X pdf png
-sci-biology/embassy X pdf png
 sci-biology/emboss X pdf png
 sci-biology/fasta -icc sse2
 sci-biology/rebase -emboss
@@ -309,7 +315,7 @@ sci-libs/cctbx -threads minimal openmp
 sci-libs/cholmod metis
 sci-libs/fftw -mpi avx quad threads
 sci-libs/gdal -geos
->=sci-libs/geos-3.3.5 python
+sci-libs/geos python
 sci-libs/hdf5 -threads
 sci-libs/libcmatrix -atlas threads
 sci-libs/mkl -mpi fftw fortran95 int64
@@ -332,7 +338,7 @@ sys-apps/hal -crypt consolekit
 sys-apps/hwloc -X -cairo
 sys-apps/irqbalance caps
 sys-apps/kexec-tools lzma
-sys-apps/man-db berkdb
+sys-apps/man-db -gdbm berkdb
 sys-apps/pciutils zlib
 sys-apps/portage -doc
 sys-apps/shadow xattr
@@ -349,9 +355,7 @@ sys-cluster/maui pbs
 sys-cluster/mpich2 fortran mpi-threads romio threads
 sys-cluster/openmpi -threads
 sys-cluster/torque crypt tk
-sys-devel/gcc:4.1 -cxx
-sys-devel/gcc -gcj -gtk -libffi fortran graphite multilib
-sys-devel/gcc lto
+sys-devel/gcc -gcj -gtk -libffi fortran graphite lto multilib
 sys-devel/gdb expat python
 sys-devel/gettext -doc
 sys-devel/llvm gold
@@ -380,8 +384,7 @@ virtual/perl-Locale-Maketext-Simple -doc
 virtual/poppler-glib cairo
 virtual/tex-base -doc
 virtual/texi2dvi -doc
-virtual/udev gudev
-virtual/udev -keymap hwdb
+virtual/udev -keymap gudev hwdb
 www-apps/swish-e -mp3 -pdf -perl
 www-client/chromium custom-cflags system-v8
 www-client/firefox custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-sqlite
@@ -390,17 +393,62 @@ www-client/midori -html idn libnotify soup sqlite
 www-client/uzbl gtk3
 www-plugins/adobe-flash nspluginwrapper
 x11-base/xorg-drivers udev
-=x11-base/xorg-server-1.10.2 xvfb
 x11-base/xorg-server hal udev xvfb
 x11-drivers/nvidia-drivers multilib
-=x11-libs/cairo-1.10.2-r1 X
-x11-libs/cairo glitz svg xcb
+x11-libs/cairo X glitz svg xcb
 x11-libs/fltk xft
 >=x11-libs/gdk-pixbuf-2.24.0-r1 jpeg
+>=x11-libs/libICE-1.0.8-r1 abi_x86_32
+>=x11-libs/libSM-1.2.1-r1 abi_x86_32
+>=x11-libs/libX11-1.5.0-r1 abi_x86_32
+>=x11-libs/libXScrnSaver-1.2.2-r1 abi_x86_32
+>=x11-libs/libXau-1.0.7-r1 abi_x86_32
+>=x11-libs/libXaw-1.0.11-r2 abi_x86_32
+>=x11-libs/libXcomposite-0.4.4-r1 abi_x86_32
+>=x11-libs/libXcursor-1.1.13-r1 abi_x86_32
+>=x11-libs/libXdamage-1.1.4-r1 abi_x86_32
+>=x11-libs/libXdmcp-1.1.1-r1 abi_x86_32
+>=x11-libs/libXext-1.3.1-r1 abi_x86_32
+>=x11-libs/libXfixes-5.0-r1 abi_x86_32
+>=x11-libs/libXft-2.3.1-r1 abi_x86_32
+>=x11-libs/libXi-1.7 abi_x86_32
+>=x11-libs/libXinerama-1.1.2-r1 abi_x86_32
+>=x11-libs/libXmu-1.1.1-r1 abi_x86_32
+>=x11-libs/libXp-1.0.1-r1 abi_x86_32
+>=x11-libs/libXpm-3.5.10-r1 abi_x86_32
+>=x11-libs/libXrandr-1.4.0-r1 abi_x86_32
+>=x11-libs/libXrender-0.9.7-r1 abi_x86_32
+>=x11-libs/libXt-1.1.3-r1 abi_x86_32
+>=x11-libs/libXtst-1.2.1-r1 abi_x86_32
+>=x11-libs/libXv-1.0.7-r1 abi_x86_32
+>=x11-libs/libXvMC-1.0.7-r1 abi_x86_32
+>=x11-libs/libXxf86dga-1.1.3-r1 abi_x86_32
+>=x11-libs/libXxf86vm-1.1.2-r1 abi_x86_32
 >=x11-libs/libdrm-2.4.37 libkms
+>=x11-libs/libpciaccess-0.13.1-r1 abi_x86_32
+>=x11-libs/libvdpau-0.5-r1 abi_x86_32
+>=x11-libs/libxcb-1.9-r1 abi_x86_32
 x11-libs/qwt svg
 x11-libs/vte python
 x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startup-notification
+>=x11-proto/compositeproto-0.4.2-r1 abi_x86_32
+>=x11-proto/damageproto-1.2.1-r1 abi_x86_32
+>=x11-proto/fixesproto-5.0-r1 abi_x86_32
+>=x11-proto/inputproto-2.3 abi_x86_32
+>=x11-proto/kbproto-1.0.6-r1 abi_x86_32
+>=x11-proto/printproto-1.0.5-r1 abi_x86_32
+>=x11-proto/randrproto-1.4.0-r1 abi_x86_32
+>=x11-proto/recordproto-1.14.2-r1 abi_x86_32
+>=x11-proto/renderproto-0.11.1-r1 abi_x86_32
+>=x11-proto/scrnsaverproto-1.2.2-r1 abi_x86_32
+>=x11-proto/videoproto-2.3.1-r1 abi_x86_32
+>=x11-proto/xcb-proto-1.8-r1 abi_x86_32
+>=x11-proto/xextproto-7.2.1-r1 abi_x86_32
+>=x11-proto/xf86bigfontproto-1.2.0-r1 abi_x86_32
+>=x11-proto/xf86dgaproto-2.1-r2 abi_x86_32
+>=x11-proto/xf86vidmodeproto-2.3.1-r1 abi_x86_32
+>=x11-proto/xineramaproto-1.2.1-r1 abi_x86_32
+>=x11-proto/xproto-7.0.23-r2 abi_x86_32
 x11-terms/rxvt-unicode -afterimage -vanilla -wcwidth -xterm-color 256-color perl pixbuf truetype xft
 x11-terms/terminator libnotify
 x11-themes/gentoo-artwork offensive
