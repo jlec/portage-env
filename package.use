@@ -398,6 +398,7 @@ x11-base/xorg-drivers udev
 x11-base/xorg-server hal udev xvfb
 x11-drivers/nvidia-drivers multilib
 x11-libs/cairo X glitz svg xcb
+x11-libs/fltk xft
 >=x11-libs/gdk-pixbuf-2.24.0-r1 jpeg
 >=x11-libs/libICE-1.0.8-r1 abi_x86_32
 >=x11-libs/libSM-1.2.1-r1 abi_x86_32
@@ -453,7 +454,6 @@ x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startu
 x11-terms/rxvt-unicode -afterimage -vanilla -wcwidth -xterm-color 256-color perl pixbuf truetype xft
 x11-terms/terminator libnotify
 x11-themes/gentoo-artwork offensive
-x11-themes/gtk-engines-murrine -themes
+x11-themes/gtk-engines-murrine themes
 x11-themes/zukitwo gnome-shell
 x11-wm/fluxbox imlib
-
