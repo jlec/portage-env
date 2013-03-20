@@ -355,7 +355,9 @@ sys-cluster/maui pbs
 sys-cluster/mpich2 fortran mpi-threads romio threads
 sys-cluster/openmpi -threads
 sys-cluster/torque crypt tk
-sys-devel/gcc -gcj -gtk -libffi fortran graphite lto multilib
+sys-devel/gcc -gtk -libffi fortran gcj graphite lto multilib
+sys-devel/gcc:4.1 -gcj
+sys-devel/gcc:4.6 -gcj
 sys-devel/gdb expat python
 sys-devel/gettext -doc
 sys-devel/llvm gold
