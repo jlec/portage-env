@@ -22,10 +22,13 @@ app-crypt/pinentry gtk
 app-crypt/seahorse dbus gnome-keyring libnotify
 app-crypt/seahorse-plugins applet libnotify
 app-doc/abs-guide pdf
+# required by sci-libs/shogun-2.0.0[doc]
+# required by shogun (argument)
+>=app-doc/doxygen-1.8.3.1 dot
 app-doc/tldp-howto -html -pdf htmlsingle
 app-editors/gedit python spell zeitgeist
 app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
-app-emulation/libvirt -pcap -vde -virt-network caps nfs parted python qemu sasl udev virtualbox
+app-emulation/libvirt -macvtap -pcap -vde -vepa -virt-network caps nfs parted python qemu sasl udev virtualbox
 app-emulation/lxc examples
 app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
 app-emulation/virt-manager sasl
@@ -51,6 +54,7 @@ app-pda/libsyncml bluetooth
 app-portage/eix -hardened optimization sqlite strong-optimization tools
 app-portage/layman git subversion
 app-portage/pfl network-cron
+app-portage/squashed-portage zsync
 app-text/acroread -ldap -nsplugin
 app-text/aspell linguas_de
 app-text/evince -dvi djvu t1lib
@@ -89,6 +93,7 @@ dev-libs/elfutils lzma
 dev-libs/folks -tracker socialweb
 dev-libs/keybinder python
 dev-libs/libf2c static
+dev-libs/libgcrypt -caps
 dev-libs/libpthread-stubs abi_x86_32
 dev-libs/libwiimote force tilt
 dev-libs/libxml2 python
@@ -102,10 +107,15 @@ dev-perl/Text-CSV_XS -doc
 dev-perl/Text-Iconv -doc
 dev-perl/XML-Filter-BufferText -doc
 dev-python/PyQt4 assistant dbus sql svg
+# required by dev-util/ninja-ide-2.1.1-r5
+# required by dev-util/ninja-ide (argument)
+>=dev-python/PyQt4-4.10 webkit
+dev-python/astng -python_targets_python3_3
 dev-python/imaging tk
 dev-python/ipython -gnuplot -wxwidgets matplotlib
 dev-python/matplotlib tk
 dev-python/numpy lapack
+dev-python/pandas -python_targets_python3_2 excel
 dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
 dev-python/pypy sqlite
@@ -134,6 +144,7 @@ dev-util/glade doc python
 dev-util/jay java
 dev-util/strace aio
 dev-vcs/cvs crypt
+dev-vcs/cvs2svn git
 dev-vcs/git curl cvs subversion threads tk webdav
 dev-vcs/rabbitvcs diff gedit git nautilus
 dev-vcs/subversion -dso java perl
@@ -154,9 +165,9 @@ gnome-extra/gnome-games guile
 gnome-extra/gnome-media aac flac
 gnome-extra/gnome-screensaver libnotify
 gnome-extra/sushi office
-gnome-extra/zeitgeist extensions fts passiv plugins
+gnome-extra/zeitgeist downloads-monitor extensions fts introspection passiv plugins telepathy
 gnome-extra/zeitgeist-datahub download
-gnome-extra/zeitgeist-datasources chromium firefox
+gnome-extra/zeitgeist-datasources chromium eog firefox gedit thunderbird
 gnome-extra/zeitgeist-extensions -fts
 gnome-extra/zenity libnotify
 mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
@@ -169,7 +180,7 @@ media-fonts/texcm-ttf -doc
 media-gfx/gimp aalib dbus exif lcms mng pdf postscript svg udev wmf xpm
 media-gfx/graphicsmagick q16
 media-gfx/gthumb -gphoto2 exif slideshow svg
-media-gfx/imagemagick autotrace corefonts fftw fontconfig jpeg2k lqr opencl postscript q32 svg webp xml
+media-gfx/imagemagick -autotrace corefonts fftw fontconfig jpeg2k lqr opencl postscript q32 svg webp xml
 media-gfx/inkscape lcms mmx postscript
 media-gfx/natural-gentoo build
 media-gfx/ngplant lua
@@ -219,8 +230,9 @@ media-video/libav aac avx fdk mp3 x264
 media-video/mplayer -dxr3 -libmpeg2 amr faac md5sum mng
 media-video/recordmydesktop jack
 media-video/totem -gnome -hal -nsplugin -python -vorbis -youtube
-media-video/vlc -directfb -dts -httpd -kde -oss -ssl -svga a52 aac cdda cddb cdio dbus dvd fbcon ffmpeg flac freetype gtk hal libnotify mmx mozilla mp3 mpeg nsplugin ogg qt4 rtsp sdl sqlite stream svg theora udev unicode v4l v4l2 vcd vorbis win32codecs wxwindows x264 xml xv xvid
-net-analyzer/munin -cgi dhcpd http
+media-video/vlc -directfb -dts -httpd -kde -oss -ssl -svga a52 aac cdda cddb cdio dbus dvd fbcon ffmpeg flac freetype gtk hal libnotify mmx mozilla mp3 mpeg nsplugin ogg qt4 rtsp sdl sqlite stream svg theora udev unicode upnp v4l v4l2 vcd vorbis win32codecs wxwindows x264 xml xv xvid
+net-analyzer/fwlogwatch adns
+net-analyzer/munin -cgi -dhcpd http
 net-analyzer/nagios-nrpe command-args ssl
 net-analyzer/nagios-plugins nagios-ping nagios-ssh snmp
 net-analyzer/net-snmp -lm_sensors
@@ -229,6 +241,7 @@ net-analyzer/rrdtool -tcl perl
 net-analyzer/wireshark gcrypt smi
 net-dns/avahi gtk3 utils
 net-fs/autofs -ldap
+net-fs/cifs-utils upcall
 net-fs/netatalk avahi
 net-fs/nfs-utils -nfsv3 nfsdcld nfsidmap nfsv41
 net-fs/samba -cups -ldap acl server swat syslog
@@ -344,7 +357,7 @@ sys-apps/portage -doc
 sys-apps/shadow xattr
 sys-apps/smartmontools minimal
 sys-apps/texinfo -doc
-sys-apps/util-linux crypt udev
+sys-apps/util-linux crypt slang udev
 sys-apps/v86d x86emu
 sys-auth/consolekit pam policykit
 sys-auth/pambase consolekit gnome-keyring ssh
@@ -386,7 +399,7 @@ virtual/tex-base -doc
 virtual/texi2dvi -doc
 virtual/udev -keymap gudev hwdb
 www-apps/swish-e -mp3 -pdf -perl
-www-client/chromium custom-cflags system-v8
+www-client/chromium -system-ffmpeg custom-cflags system-v8
 www-client/firefox custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-sqlite
 www-client/links svga
 www-client/midori -html idn libnotify soup sqlite
@@ -455,3 +468,4 @@ x11-themes/gentoo-artwork offensive
 x11-themes/gtk-engines-murrine themes
 x11-themes/zukitwo gnome-shell
 x11-wm/fluxbox imlib
+

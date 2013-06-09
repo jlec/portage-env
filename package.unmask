@@ -1,12 +1,10 @@
-dev-lang/python:3.3
+=virtual/ffmpeg-9*
+=media-video/libav-9*
 <dev-lang/v8-9999
-dev-vcs/rapidsvn
-sci-chemistry/burrow-owl
 sci-chemistry/coot
 sci-chemistry/pymol
 >=sci-libs/blas-reference-20110418
-sys-apps/hwids
-sys-apps/portage 
-sys-devel/gcc
-sys-process/itop
+sys-devel/gcc:4.8
 www-client/chromium:0
+app-emulation/emul-linux-x86-xlibs
+www-plugins/chrome-binary-plugins
