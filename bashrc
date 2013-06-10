@@ -1,5 +1,4 @@
 post_src_install() {
-	lafilefixer "${D}"
 	if $(grep -q "is valid for" ${PORTAGE_LOG_FILE}); then
 		addwrite /var/log/portage/flags.log
 		#echo "$(date) ${PORTAGE_LOG_FILE}" >> /var/log/portage/flags.log
