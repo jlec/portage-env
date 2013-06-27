@@ -75,6 +75,9 @@ dev-java/antlr java
 dev-java/glazedlists java5
 dev-java/java-config -python_targets_pypy1_9 pypy1_9
 dev-java/log4j -javamail
+# required by app-misc/mucommander-0.9.0::last-hope
+# required by app-misc/mucommander (argument)
+>=dev-java/slf4j-1.7.5 simple
 dev-java/swt -xulrunner
 dev-lang/R lapack
 dev-lang/path64 -assembler
@@ -124,6 +127,9 @@ dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
 dev-python/pypy sqlite
 dev-python/pyside script sql svg webkit xmlpatterns
+# required by sci-physics/bigdft-1.7_pre24::science
+# required by sci-physics/bigdft (argument)
+>=dev-python/pyyaml-3.10-r1 libyaml
 dev-python/qscintilla-python qt4
 dev-python/rdflib sqlite
 dev-python/sphinx latex
@@ -265,7 +271,7 @@ net-misc/curl -ldap -nss gnutls threads
 net-misc/dhcpcd -compat
 net-misc/iperf threads
 net-misc/networkmanager -ppp dhcpcd nss
-net-misc/openssh ldns
+net-misc/openssh hpn ldns
 net-misc/openvpn -threads iproute2 passwordsave
 net-misc/rdesktop -alsa
 net-misc/spice-gtk -gstreamer python sasl
@@ -322,6 +328,7 @@ sci-chemistry/openbabel perl python wxwidgets
 sci-chemistry/pdb2pqr pdb2pka
 sci-chemistry/pymol apbs numpy shaders vmd
 sci-chemistry/raster3d gd
+sci-chemistry/rosetta -X -boinc -boost -openmp mpi
 sci-chemistry/tinker -X
 sci-chemistry/vmd cuda msms povray
 sci-libs/arpack -mpi
@@ -387,6 +394,15 @@ sys-kernel/lh-sources symlink
 sys-libs/glibc glibc-omitfp multilib
 sys-libs/ncurses tinfo
 sys-libs/pam -nis
+# required by sys-libs/tevent-0.9.18
+# required by net-fs/samba-3.6.16
+# required by gnome-base/gnome-vfs-2.24.4-r1[samba]
+# required by gnome-base/libgnome-2.32.1-r1
+# required by dev-python/libgnome-python-2.28.1
+# required by x11-terms/terminator-0.97[gnome]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/talloc-2.0.8 python
 sys-libs/zlib minizip
 sys-power/nvclock nvcontrol
 sys-power/upower ios
@@ -478,3 +494,11 @@ x11-themes/zukitwo gnome-shell
 x11-wm/fluxbox imlib
 sys-devel/gcc:4.1 -gcj
 sys-devel/gcc:4.6 -gcj
+# required by app-emulation/virt-manager-0.10.0[spice]
+# required by @selected
+# required by @world (argument)
+>=net-misc/spice-gtk-0.18 gtk3
+# required by app-emulation/virt-manager-0.10.0
+# required by @selected
+# required by @world (argument)
+=x11-libs/vte-0.34.2 glade
