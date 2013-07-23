@@ -16,7 +16,8 @@ app-benchmarks/bootchart2 svg
 app-benchmarks/i7z -X
 app-cdr/brasero -totem -tracker cdrtools mp3
 app-cdr/dvd95 mpeg
-app-crypt/johntheripper -mpi custom-cflags
+app-crypt/hashcat-bin cuda opencl
+app-crypt/johntheripper -mpi cuda custom-cflags opencl openmp
 app-crypt/libsecret vala
 app-crypt/pinentry gtk
 app-crypt/seahorse dbus gnome-keyring libnotify
@@ -28,7 +29,7 @@ app-doc/abs-guide pdf
 app-doc/tldp-howto -html -pdf htmlsingle
 app-editors/gedit python spell zeitgeist
 app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
-app-emulation/libvirt -macvtap -pcap -vde -vepa -virt-network caps nfs parted python qemu sasl udev virtualbox
+app-emulation/libvirt -macvtap -pcap -vde -vepa -virt-network caps lxc nfs parted python qemu sasl systemd udev virtualbox
 app-emulation/lxc examples
 app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
 app-emulation/virt-manager sasl
@@ -70,12 +71,16 @@ app-text/texi2html -doc
 app-text/texlive -doc -indy -xindy dvipdfm extra graphics linguas_en_GB pstricks publishers science tex4ht xml
 app-text/texlive-core -doc
 dev-db/hsqldb java6
+dev-db/mariadb -perl minimal
 dev-db/mysql -perl minimal
 dev-db/sqlite -tcl extensions fts3 secure-delete unlock-notify
 dev-games/cegui devil opengl
 dev-java/antlr java
 dev-java/glazedlists java5
 dev-java/log4j -javamail
+# required by app-misc/mucommander-0.9.0::last-hope
+# required by app-misc/mucommander (argument)
+>=dev-java/slf4j-1.7.5 simple
 dev-java/swt -xulrunner
 dev-lang/R lapack
 dev-lang/path64 -assembler
@@ -95,6 +100,7 @@ dev-libs/keybinder python
 dev-libs/libf2c static
 dev-libs/libgcrypt -caps
 dev-libs/libpthread-stubs abi_x86_32
+dev-libs/libusbx udev
 dev-libs/libwiimote force tilt
 dev-libs/libxml2 python
 dev-libs/maloc -mpi
@@ -110,12 +116,21 @@ dev-python/PyQt4 assistant dbus sql svg
 # required by dev-util/ninja-ide-2.1.1-r5
 # required by dev-util/ninja-ide (argument)
 >=dev-python/PyQt4-4.10 webkit
+# required by dev-util/ninja-ide-2.3
+# required by @selected
+# required by @world (argument)
+>=dev-python/PyQt4-4.10.2 declarative
 dev-python/astng -python_targets_python3_3
 dev-python/imaging tk
 dev-python/ipython -gnuplot -wxwidgets matplotlib
 dev-python/matplotlib tk
 dev-python/numpy lapack
 dev-python/pandas -python_targets_python3_2 excel
+# required by virtual/python-imaging-1[python_targets_python3_2]
+# required by media-gfx/qrencode-python-1.01-r1
+# required by @selected
+# required by @world (argument)
+>=dev-python/pillow-2.0.0 tk
 dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
 dev-python/pypy sqlite
@@ -130,11 +145,39 @@ dev-qt/qthelp compat
 dev-qt/qtopengl -egl
 dev-qt/qtsql qt3support
 dev-ruby/json ruby_targets_ruby19
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby20]
+# required by dev-lang/ruby-2.0.0_p247[rdoc]
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+>=dev-ruby/json-1.8.0 ruby_targets_ruby20
 dev-ruby/racc ruby_targets_ruby19
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby20]
+# required by dev-lang/ruby-2.0.0_p247[rdoc]
+# required by dev-ruby/rubygems-2.0.3[ruby_targets_ruby19]
+# required by virtual/rubygems-6
+# required by dev-ruby/rake-0.9.6
+# required by dev-ruby/json-1.8.0[-test,-doc,ruby_targets_ruby20]
+>=dev-ruby/racc-1.4.9 ruby_targets_ruby20
 dev-ruby/rake ruby_targets_ruby19
+# required by dev-lang/ruby-2.0.0_p247
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby19]
+# required by dev-lang/ruby-1.9.3_p448[rdoc]
+# required by dev-ruby/rubygems-2.0.3[ruby_targets_ruby19]
+# required by virtual/rubygems-6
+# required by dev-ruby/json-1.8.0[-test,ruby_targets_ruby20]
+>=dev-ruby/rake-0.9.6 ruby_targets_ruby20
 dev-ruby/rdoc ruby_targets_ruby19
+# required by dev-lang/ruby-2.0.0_p247[rdoc]
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+>=dev-ruby/rdoc-4.0.1-r1 ruby_targets_ruby20
 dev-ruby/ruby-elf -jruby
 dev-ruby/rubygems ruby_targets_ruby19
+# required by dev-lang/ruby-2.0.0_p247
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby19]
+# required by dev-lang/ruby-1.9.3_p448[rdoc]
+# required by dev-ruby/json-1.8.0[ruby_targets_ruby19]
+>=dev-ruby/rubygems-2.0.3 ruby_targets_ruby20
 dev-scheme/guile discouraged networking threads
 dev-tcltk/tktreectrl shellicon
 dev-util/anjuta devhelp glade graphviz subversion vala
@@ -150,7 +193,7 @@ dev-vcs/rabbitvcs diff gedit git nautilus
 dev-vcs/subversion -dso java perl
 games-fps/nexuiz maps
 gnome-base/gconf policykit
-gnome-base/gdm -ldap
+gnome-base/gdm -consolekit -ldap
 gnome-base/gnome-applets policykit
 gnome-base/gnome-control-center -cheese -networkmanager socialweb v4l
 gnome-base/gnome-settings-daemon -short-touchpad-timeout libnotify policykit
@@ -245,6 +288,8 @@ net-fs/cifs-utils upcall
 net-fs/netatalk avahi
 net-fs/nfs-utils -nfsv3 nfsdcld nfsidmap nfsv41
 net-fs/samba -cups -ldap acl server swat syslog
+# required by net-fs/cifs-utils-6.1[acl]
+=net-fs/samba-3.6.16 winbind
 net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
 net-im/pidgin -ncurses gnutls gstreamer python spell
 net-im/skype qt-static
@@ -262,10 +307,14 @@ net-misc/curl -ldap -nss gnutls threads
 net-misc/dhcpcd -compat
 net-misc/iperf threads
 net-misc/networkmanager -ppp dhcpcd nss
-net-misc/openssh ldns
+net-misc/openssh -hpn ldns
 net-misc/openvpn -threads iproute2 passwordsave
 net-misc/rdesktop -alsa
 net-misc/spice-gtk -gstreamer python sasl
+# required by app-emulation/virt-manager-0.10.0
+# required by @selected
+# required by @world (argument)
+>=net-misc/spice-gtk-0.18 gtk3
 net-misc/vde pcap
 net-misc/vinagre rdp
 net-misc/wicd -pm-utils libnotify
@@ -356,11 +405,12 @@ sys-apps/pciutils zlib
 sys-apps/portage -doc
 sys-apps/shadow xattr
 sys-apps/smartmontools minimal
+sys-apps/systemd gudev hwdb kmod
 sys-apps/texinfo -doc
 sys-apps/util-linux crypt slang udev
 sys-apps/v86d x86emu
 sys-auth/consolekit pam policykit
-sys-auth/pambase consolekit gnome-keyring ssh
+sys-auth/pambase -consolekit gnome-keyring ssh
 sys-block/gparted fat ntfs reiserfs
 sys-block/parted device-mapper
 sys-boot/plymouth gdm
@@ -384,6 +434,15 @@ sys-kernel/lh-sources symlink
 sys-libs/glibc glibc-omitfp multilib
 sys-libs/ncurses tinfo
 sys-libs/pam -nis
+# required by sys-libs/tevent-0.9.18
+# required by net-fs/samba-3.6.16
+# required by gnome-base/gnome-vfs-2.24.4-r1[samba]
+# required by gnome-base/libgnome-2.32.1-r1
+# required by dev-python/libgnome-python-2.28.1
+# required by x11-terms/terminator-0.97[gnome]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/talloc-2.0.8 python
 sys-libs/zlib minizip
 sys-power/nvclock nvcontrol
 sys-power/upower ios
@@ -395,6 +454,10 @@ virtual/mpi fortran romio
 virtual/mysql minimal
 virtual/perl-Locale-Maketext-Simple -doc
 virtual/poppler-glib cairo
+# required by sci-chemistry/mgltools-1.5.6::science
+# required by @selected
+# required by @world (argument)
+>=virtual/python-imaging-1 tk
 virtual/tex-base -doc
 virtual/texi2dvi -doc
 virtual/udev -keymap gudev hwdb
@@ -405,6 +468,7 @@ www-client/links svga
 www-client/midori -html idn libnotify soup sqlite
 www-client/uzbl gtk3
 www-plugins/adobe-flash nspluginwrapper
+www-plugins/google-talkplugin libnotify
 x11-base/xorg-drivers udev
 x11-base/xorg-server hal udev xvfb
 x11-drivers/nvidia-drivers multilib

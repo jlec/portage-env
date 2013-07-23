@@ -9,3 +9,5 @@ sys-process/itop **
 www-client/pybugz **
 =x11-libs/xview-bin-3.2_p1428 **
 sys-boot/grub **
+# required by finalterm (argument)
+=x11-terms/finalterm-9999 **
