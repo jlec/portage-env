@@ -6,3 +6,5 @@ sys-apps/hwids **
 sys-devel/gcc **
 www-client/pybugz **
 sys-apps/portage ~*
+# required by finalterm (argument)
+=x11-terms/finalterm-9999 **

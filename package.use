@@ -4,12 +4,31 @@ app-admin/gentoo-smolt qt4
 app-admin/gnome-system-tools nfs policykit samba sambe
 app-admin/hddtemp network-cron
 app-admin/sudo -ldap
+# required by media-libs/freetype-2.4.12[bzip2]
+# required by app-office/libreoffice-4.1.0.4
+# required by @selected
+# required by @world (argument)
+>=app-arch/bzip2-1.0.6-r4 abi_x86_32
 app-arch/lbzip2 symlink
 app-arch/libarchive xattr
 app-arch/p7zip -X rar wxwindows
 app-arch/pigz symlink
 app-arch/tar xattr
 app-arch/unzip natspec
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+# required by media-libs/tiff-4.0.3-r3[lzma]
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+=app-arch/xz-utils-5.0.5-r1 abi_x86_32
 app-backup/deja-dup nautilus
 app-benchmarks/bootchart acct java
 app-benchmarks/bootchart2 svg
@@ -26,9 +45,15 @@ app-doc/tldp-howto -html -pdf htmlsingle
 app-editors/gedit python spell zeitgeist
 app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
 app-editors/vim python
+app-emulation/emul-linux-x86-baselibs abi_x86_32
+app-emulation/emul-linux-x86-xlibs abi_x86_32
 app-emulation/libvirt -pcap -vde -virt-network caps lxc nfs parted python qemu sasl udev virtualbox
+# required by app-emulation/virt-manager-0.10.0
+# required by @selected
+# required by @world (argument)
+>=app-emulation/libvirt-glib-0.1.7 python
 app-emulation/lxc examples
-app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
+app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl spice tls xattr
 app-emulation/virt-manager sasl
 app-emulation/virtualbox -alsa additions extensions qt4
 app-i18n/ibus dconf
@@ -44,7 +69,7 @@ app-office/libreoffice -vba -webdav gtk3 java jemalloc pdfimport python svg
 app-office/libreoffice-l10n linguas_de
 app-office/lyx latex monolithic-build subversion
 app-office/openoffice -ldap dbus gstreamer java linguas_en_GB linguas_en_US
-app-office/scribus cairo hunspell podofo
+app-office/scribus cairo hunspell podofo scripts tk
 app-office/texmaker -doc
 app-office/texmakerx -doc
 app-pda/gtkpod aac clutter flac gnome hal mp3 nls ogg webkit
@@ -59,6 +84,13 @@ app-text/evince -dvi djvu t1lib
 app-text/ghostscript-gpl cups
 app-text/hunspell linguas_de
 app-text/lcdf-typetools kpathsea
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=app-text/libpaper-1.1.24-r2 abi_x86_32
 app-text/nopaste -X
 app-text/passivetex -doc
 app-text/poppler cairo glib jpeg png qt4 utils
@@ -73,8 +105,10 @@ dev-db/sqlite -tcl extensions fts3 secure-delete unlock-notify
 dev-games/cegui devil opengl
 dev-java/antlr java
 dev-java/glazedlists java5
-dev-java/java-config -python_targets_pypy1_9 pypy1_9
 dev-java/log4j -javamail
+# required by app-office/ganttproject-2.6.1::last-hope
+# required by app-office/ganttproject (argument)
+>=dev-java/milton-2.0.5 client
 # required by app-misc/mucommander-0.9.0::last-hope
 # required by app-misc/mucommander (argument)
 >=dev-java/slf4j-1.7.5 simple
@@ -87,20 +121,74 @@ dev-lang/python sqlite tk
 dev-lang/spidermonkey threadsafe
 dev-lang/swig ccache
 dev-lang/tcl threads
-dev-lang/tk -truetype threads
+dev-lang/tk threads truetype
 dev-libs/apr-util ldap openssl
 dev-libs/boost -mpi -static-libs expat python threads
 dev-libs/cyrus-sasl -berkdb -ldap -sqlite crypt
 dev-libs/elfutils lzma
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r12[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r13
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/elfutils-0.155-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r6[abi_x86_32]
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r7[abi_x86_32]
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/expat-2.1.0-r3 abi_x86_32
 dev-libs/folks -tracker socialweb
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/glib-2.36.3-r2 abi_x86_32
 dev-libs/keybinder python
 dev-libs/libf2c static
+# required by virtual/libffi-3.0.13-r1
+# required by dev-lang/python-3.3.2-r1
+# required by sys-boot/grub-2.00-r4
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libffi-3.0.13-r1 abi_x86_32
 dev-libs/libpthread-stubs abi_x86_32
+# required by virtual/libusb-0-r1
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libusb-compat-0.1.5-r2 abi_x86_32
+dev-libs/libusbx udev
+# required by virtual/libusb-1-r1
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libusbx-1.0.16-r3 abi_x86_32
 dev-libs/libwiimote force tilt
 dev-libs/libxml2 python
 dev-libs/maloc -mpi
 dev-libs/nss utils
 dev-libs/openobex bluetooth usb
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-xlibs-20130224-r2
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r5
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11
+# required by @selected
+# required by @world (argument)
+>=dev-libs/udis86-1.7-r2 abi_x86_32
 dev-libs/xapian -sse
 dev-libs/xapian-bindings python
 dev-perl/Locale-gettext -doc
@@ -111,17 +199,16 @@ dev-python/PyQt4 assistant dbus sql svg
 # required by dev-util/ninja-ide-2.1.1-r5
 # required by ninja-ide (argument)
 >=dev-python/PyQt4-4.10 webkit
+# required by dev-util/ninja-ide-2.3
+# required by @selected
+# required by @world (argument)
+>=dev-python/PyQt4-4.10.2 declarative
 dev-python/astng -python_targets_python3_3
 dev-python/imaging tk
 dev-python/ipython -gnuplot -wxwidgets matplotlib notebook
 dev-python/matplotlib gtk3 tk
 dev-python/numpy lapack
 dev-python/pandas -python_targets_python3_2 excel
-dev-python/pillow python_single_target_python2_6 python_single_target_python2_7
-# required by virtual/python-imaging-1[python_targets_python3_2]
-# required by app-office/scribus-1.4.2-r3
-# required by @selected
-# required by @world (argument)
 >=dev-python/pillow-2.0.0 tk
 dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
@@ -133,6 +220,7 @@ dev-python/pyside script sql svg webkit xmlpatterns
 dev-python/qscintilla-python qt4
 dev-python/rdflib sqlite
 dev-python/sphinx latex
+dev-python/statsmodels -python_targets_python3_2
 dev-python/traitsgui qt4 wxwidgets
 dev-qt/qtcore glib qt3support
 dev-qt/qtgui -egl dbus gtkstyle mng qt3support
@@ -140,16 +228,46 @@ dev-qt/qthelp compat
 dev-qt/qtopengl -egl
 dev-qt/qtsql qt3support
 dev-ruby/json ruby_targets_ruby19
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby20]
+# required by dev-lang/ruby-2.0.0_p247[rdoc]
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+>=dev-ruby/json-1.8.0 ruby_targets_ruby20
 dev-ruby/racc ruby_targets_ruby19
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby20]
+# required by dev-lang/ruby-2.0.0_p247[rdoc]
+# required by dev-ruby/rubygems-2.0.3[ruby_targets_ruby19]
+# required by virtual/rubygems-1
+# required by dev-ruby/rake-0.9.6[-test,ruby_targets_ruby18]
+# required by dev-ruby/json-1.8.0[-test,-doc,ruby_targets_ruby20]
+>=dev-ruby/racc-1.4.9 ruby_targets_ruby20
 dev-ruby/rake ruby_targets_ruby19
+# required by dev-lang/ruby-2.0.0_p247
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby18]
+# required by dev-lang/ruby-1.9.3_p448[rdoc]
+# required by dev-ruby/ruby-elf-1.0.8[ruby_targets_ruby19]
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/rake-0.9.6 ruby_targets_ruby20
 dev-ruby/rdoc ruby_targets_ruby19
+# required by dev-lang/ruby-2.0.0_p247[rdoc]
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+>=dev-ruby/rdoc-4.0.1-r1 ruby_targets_ruby20
 dev-ruby/ruby-elf -jruby
 dev-ruby/rubygems ruby_targets_ruby19
+# required by dev-lang/ruby-2.0.0_p247
+# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
+# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby18]
+# required by dev-lang/ruby-1.9.3_p448[rdoc]
+# required by dev-ruby/ruby-elf-1.0.8[ruby_targets_ruby19]
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/rubygems-2.0.3 ruby_targets_ruby20
 dev-scheme/guile discouraged networking threads
 dev-tcltk/tktreectrl shellicon
 dev-util/anjuta devhelp glade graphviz subversion vala
 dev-util/cmake qt4
-dev-util/devhelp gedit
+dev-util/devhelp -python_single_target_python2_7 gedit python_single_target_python3_2
 dev-util/glade doc python
 dev-util/jay java
 dev-util/strace aio
@@ -173,6 +291,7 @@ gnome-extra/evolution-rss webkit
 gnome-extra/gnome-games guile
 gnome-extra/gnome-media aac flac
 gnome-extra/gnome-screensaver libnotify
+gnome-extra/libgda libsecret
 gnome-extra/sushi office
 gnome-extra/zeitgeist downloads-monitor extensions fts introspection passiv plugins telepathy
 gnome-extra/zeitgeist-datahub download
@@ -181,14 +300,14 @@ gnome-extra/zeitgeist-extensions -fts
 gnome-extra/zenity libnotify
 mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
 mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar smime smtp ssl tokyocabinet
-mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf lightning startup-notification system-sqlite
+mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf lightning startup-notification system-cairo system-icu system-jpeg system-sqlite
 mail-mta/nullmailer ssl
 mail-mta/ssmtp -md5sum gnutls mta
 media-fonts/terminus-font bolddiag pcf psf
 media-fonts/texcm-ttf -doc
 media-gfx/gimp aalib dbus exif lcms mng pdf postscript svg udev wmf xpm
 media-gfx/graphicsmagick q16
-media-gfx/gthumb -gphoto2 -slideshow exif svg
+media-gfx/gthumb -gphoto2 -slideshow exif libsecret svg webp
 media-gfx/imagemagick -autotrace corefonts fftw fontconfig jpeg2k lqr opencl postscript q32 svg webp xml
 media-gfx/inkscape lcms mmx postscript
 media-gfx/natural-gentoo build
@@ -206,24 +325,54 @@ media-libs/gegl exif ffmpeg svg
 media-libs/gst-plugins-base theora
 media-libs/imlib -gtk
 media-libs/lcms python
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=media-libs/lcms-2.5-r1 abi_x86_32
 media-libs/libaacplus fftw
 media-libs/libafterimage -cvg svg
 media-libs/libcanberra udev
 media-libs/libgnome-media-profiles aac mp3
 media-libs/libgphoto2 exif
 media-libs/libgpod ios mono
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r6[abi_x86_32]
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=media-libs/libjpeg-turbo-1.3.0-r2 abi_x86_32
 media-libs/libpng apng
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-xlibs-20130224-r2
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r5
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11
+# required by @selected
+# required by @world (argument)
+>=media-libs/libpng-1.6.3-r1 abi_x86_32
 media-libs/libsdl xv
 media-libs/mesa g3dvl gallium gles2 llvm motif openvg
 media-libs/sdl-mixer mikmod
 media-libs/tiff lzma
+# required by media-libs/lcms-2.5-r1[tiff]
+# required by media-libs/openjpeg-1.5.1-r1
+# required by media-video/ffmpeg-1.2.2[jpeg2k]
+# required by media-plugins/gst-plugins-ffmpeg-0.10.13_p201211-r1
+# required by media-plugins/gst-plugins-meta-0.10-r8[ffmpeg]
+# required by net-im/pidgin-2.10.7-r3[gstreamer]
+# required by x11-plugins/pidgin-otr-3.2.1
+# required by @selected
+# required by @world (argument)
+>=media-libs/tiff-4.0.3-r3 abi_x86_32
 media-libs/x264 threads
 media-plugins/audacious-plugins mad vorbis wma
 media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg lame mad mp3 mpeg ogg taglib theora vorbis xv
 media-plugins/gst-plugins-v4l2 udev
 media-sound/alsa-tools fltk
 media-sound/audacious dbus
-media-sound/banshee aac boo cdda encode flac ipod karma mtp podcast
+media-sound/banshee -web aac boo cdda encode flac ipod karma mtp podcast
 media-sound/easytag mp3
 media-sound/exaile -libnotify cddb mad
 media-sound/grip vorbis
@@ -247,13 +396,14 @@ net-analyzer/nagios-plugins nagios-ping nagios-ssh snmp
 net-analyzer/net-snmp -lm_sensors
 net-analyzer/netcat crypt
 net-analyzer/rrdtool -tcl perl
-net-analyzer/wireshark gcrypt smi
+net-analyzer/wireshark -gtk2 gcrypt gtk3 smi
 net-dns/avahi gtk3 utils
+net-dns/dnsmasq -dhcp
 net-fs/autofs -mount-locking ldap
 net-fs/cifs-utils upcall
 net-fs/netatalk -avahi
 net-fs/nfs-utils -nfsv3 nfsdcld nfsidmap nfsv41
-net-fs/samba -cups -ldap acl server swat syslog
+net-fs/samba -cups -ldap acl server swat syslog winbind
 net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
 net-im/pidgin -ncurses gnutls gstreamer python spell
 net-im/skype qt-static
@@ -275,6 +425,10 @@ net-misc/openssh hpn ldns
 net-misc/openvpn -threads iproute2 passwordsave
 net-misc/rdesktop -alsa
 net-misc/spice-gtk -gstreamer python sasl
+# required by app-emulation/virt-manager-0.10.0[spice]
+# required by @selected
+# required by @world (argument)
+>=net-misc/spice-gtk-0.18 gtk3
 net-misc/vde pcap
 net-misc/vinagre rdp
 net-misc/wicd -pm-utils libnotify
@@ -318,7 +472,7 @@ sci-chemistry/ccpnmr examples
 sci-chemistry/cns aria debug openmp scripts
 sci-chemistry/coot new-interface
 sci-chemistry/cyana -examples
-sci-chemistry/gromacs -cuda altivec avx256 blas lapack xml
+sci-chemistry/gromacs -cuda altivec avx256 blas lapack mpi openmp xml
 sci-chemistry/hkl2map-bin script
 sci-chemistry/jmol client-only
 sci-chemistry/mifit debug examples
@@ -342,7 +496,7 @@ sci-libs/geos python
 sci-libs/hdf5 -threads
 sci-libs/libcmatrix -atlas threads
 sci-libs/mkl -mpi fftw fortran95 int64
-sci-libs/netcdf -hdf5 fortran
+sci-libs/netcdf -hdf5 fortran hdf
 sci-libs/scip fftw
 sci-libs/scipy sparse umfpack
 sci-libs/starparse guile
@@ -354,6 +508,13 @@ sci-visualization/grace fftw
 sci-visualization/mayavi qt4
 sci-visualization/qtiplot emf latex ods origin png python xls
 sys-apps/acl nfs
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-apps/attr-2.4.47-r1 abi_x86_32
 sys-apps/coreutils acl gmp
 sys-apps/flashrom gfxnvidia nicintel_spi
 sys-apps/gnome-disk-utility fat
@@ -363,36 +524,75 @@ sys-apps/irqbalance caps
 sys-apps/kexec-tools lzma
 sys-apps/man-db -gdbm berkdb
 sys-apps/pciutils zlib
-sys-apps/portage -doc
+sys-apps/portage -doc python3 xattr
 sys-apps/shadow xattr
 sys-apps/smartmontools minimal
 sys-apps/texinfo -doc
-sys-apps/util-linux crypt udev
+sys-apps/util-linux crypt slang udev
 sys-apps/v86d x86emu
 sys-auth/consolekit pam policykit
 sys-auth/pambase consolekit gnome-keyring ssh
-sys-block/gparted fat ntfs reiserfs
+sys-block/gparted fat ntfs policykit reiserfs
 sys-block/parted device-mapper
 sys-boot/plymouth gdm
 sys-cluster/maui pbs
 sys-cluster/mpich2 fortran mpi-threads romio threads
 sys-cluster/openmpi -threads
-sys-cluster/torque crypt tk
+sys-cluster/torque -tk cpuset cpusets crypt
 sys-devel/gcc -gtk -libffi fortran gcj graphite lto multilib
 sys-devel/gdb expat python
 sys-devel/gettext -doc
 sys-devel/llvm gold
+# required by sys-devel/clang-3.3-r100
+# required by @selected
+# required by @world (argument)
+=sys-devel/llvm-3.3-r1 abi_x86_32 clang
 sys-devel/patch xattr
-sys-fs/aufs2 inotify kernel-patch nfs
 sys-fs/aufs3 inotify kernel-patch nfs
 sys-fs/hfsutils tcl tk
 sys-fs/ntfs3g ntfsprogs
 sys-fs/quota netlink rpc
 sys-fs/udev edd extras gudev hwdb keymap
+# required by virtual/udev-206-r2
+# required by virtual/udev (argument)
+=sys-fs/udev-207 abi_x86_32
+# required by virtual/udev-206-r2
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+#=sys-fs/udev-206-r3 abi_x86_32
 sys-fs/udisks crypt
 sys-kernel/lh-sources symlink
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+>=sys-libs/e2fsprogs-libs-1.42.7-r1 abi_x86_32
 sys-libs/glibc glibc-omitfp multilib
-sys-libs/ncurses tinfo
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+>=sys-libs/gpm-1.20.7-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r6[abi_x86_32]
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-libs/libavc1394-0.5.4-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r6[abi_x86_32]
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-libs/libraw1394-2.1.0-r1 abi_x86_32
+sys-libs/ncurses gpm tinfo
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+>=sys-libs/ncurses-5.9-r3 abi_x86_32
 sys-libs/pam -nis
 # required by sys-libs/tevent-0.9.18
 # required by net-fs/samba-3.6.16
@@ -404,12 +604,59 @@ sys-libs/pam -nis
 # required by @world (argument)
 >=sys-libs/talloc-2.0.8 python
 sys-libs/zlib minizip
+# required by media-libs/freetype-2.4.12
+# required by app-office/libreoffice-4.1.0.4
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.8-r1 abi_x86_32
 sys-power/nvclock nvcontrol
 sys-power/upower ios
 sys-process/htop cgroup
 sys-process/lsof rpc
 virtual/ffmpeg X encode mp3 threads x264
+# required by media-libs/lcms-2.5-r1[jpeg]
+# required by media-libs/openjpeg-1.5.1-r1
+# required by media-video/ffmpeg-1.2.2[jpeg2k]
+# required by media-plugins/gst-plugins-ffmpeg-0.10.13_p201211-r1
+# required by media-plugins/gst-plugins-meta-0.10-r8[ffmpeg]
+# required by net-im/pidgin-2.10.7-r3[gstreamer]
+# required by x11-plugins/pidgin-otr-3.2.1
+# required by @selected
+# required by @world (argument)
+>=virtual/jpeg-62 abi_x86_32
 virtual/latex-base -doc
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-xlibs-20130224-r2
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r5
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11
+# required by @selected
+# required by @world (argument)
+>=virtual/libffi-3.0.13-r1 abi_x86_32
+# required by dev-libs/glib-2.36.3-r2
+# required by x11-libs/pango-1.34.1
+# required by gnome-base/librsvg-2.37.0
+# required by media-gfx/imagemagick-6.8.6.8[svg]
+# required by media-gfx/inkscape-0.48.4-r1
+# required by @selected
+# required by @world (argument)
+>=virtual/libiconv-0-r1 abi_x86_32
+# required by media-libs/tiff-4.0.3-r3[jpeg]
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+# required by dev-libs/libusb-compat-0.1.5-r2
+# required by virtual/libusb-0-r1
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=virtual/libusb-1-r1 abi_x86_32
 virtual/mpi fortran romio
 virtual/mysql minimal
 virtual/perl-Locale-Maketext-Simple -doc
@@ -421,9 +668,22 @@ virtual/poppler-glib cairo
 virtual/tex-base -doc
 virtual/texi2dvi -doc
 virtual/udev -keymap gudev hwdb
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r12
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=virtual/udev-206-r2 abi_x86_32
 www-apps/swish-e -mp3 -pdf -perl
 www-client/chromium -custom-cflags -system-ffmpeg system-v8
-www-client/firefox custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-sqlite
+www-client/firefox custom-cflags custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-cairo system-icu system-jpeg system-sqlite
 www-client/links svga
 www-client/midori -html idn libnotify soup sqlite
 www-client/uzbl gtk3
@@ -465,8 +725,15 @@ x11-libs/fltk xft
 >=x11-libs/libpciaccess-0.13.1-r1 abi_x86_32
 >=x11-libs/libvdpau-0.5-r1 abi_x86_32
 >=x11-libs/libxcb-1.9-r1 abi_x86_32
+x11-libs/motif motif22-compatibility xft
 x11-libs/qwt svg
 x11-libs/vte python
+# required by app-emulation/virt-manager-0.10.0
+# required by @selected
+# required by @world (argument)
+=x11-libs/vte-0.34.2 glade
+x11-misc/slim consolekit
+x11-misc/xscreensaver -gdm opengl pam xinerama
 x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startup-notification
 >=x11-proto/compositeproto-0.4.2-r1 abi_x86_32
 >=x11-proto/damageproto-1.2.1-r1 abi_x86_32
@@ -492,13 +759,24 @@ x11-themes/gentoo-artwork offensive
 x11-themes/gtk-engines-murrine themes
 x11-themes/zukitwo gnome-shell
 x11-wm/fluxbox imlib
+xfce-base/thunar libnotify udev
+xfce-base/xfce4-session udev
+xfce-base/xfce4-settings libnotify
+xfce-base/xfdesktop libnotify
+xfce-base/xfwm4 -xcomposite
+xfce-extra/tumbler curl ffmpeg odf pdf
+xfce-extra/xfce4-sensors-plugin libnotify lm_sensors
+dev-java/java-config
 sys-devel/gcc:4.1 -gcj
 sys-devel/gcc:4.6 -gcj
-# required by app-emulation/virt-manager-0.10.0[spice]
+>=media-libs/libpng-1.2.50-r1:1.2 abi_x86_32
+>=media-libs/tiff-3.9.7-r1:3 abi_x86_32
+>=virtual/libusb-0-r1:0 abi_x86_32
+>=virtual/jpeg-0-r2:0 abi_x86_32
+# required by virtual/udev-206-r3
+# required by sys-fs/lvm2-2.02.103[udev]
+# required by sys-block/parted-3.1-r1[device-mapper]
+# required by sys-block/gparted-0.16.1
 # required by @selected
 # required by @world (argument)
->=net-misc/spice-gtk-0.18 gtk3
-# required by app-emulation/virt-manager-0.10.0
-# required by @selected
-# required by @world (argument)
-=x11-libs/vte-0.34.2 glade
+=sys-fs/udev-208 abi_x86_32

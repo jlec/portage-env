@@ -7,3 +7,7 @@ app-text/texlive-core-2012
 dev-texlive/texlive-latexextra-2012
 dev-texlive/texlive-latexrecommended-2012
 dev-texlive/texlive-fontutils-2012
+dev-texlive/texlive-basic-2013
+dev-texlive/texlive-genericrecommended-2013
+dev-texlive/texlive-latex-2013
+dev-tex/luatex-0.76.0

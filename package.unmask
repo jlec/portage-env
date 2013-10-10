@@ -4,6 +4,33 @@ sci-chemistry/pymol
 sys-devel/gcc:4.8
 www-client/chromium:0
 sci-libs/blas-reference
-www-plugins/chrome-binary-plugins
-app-emulation/emul-linux-x86-xlibs
+www-plugins/chrome-binary-plugins:beta
 
+dev-java/sun-jre-bin
+net-im/gajim
+app-admin/eselect-bashcomp
+app-shells/bash-completion
+app-shells/gentoo-bashcomp
+# required by =virtual/python-json-0 (argument)
+# /usr/portage/profiles/package.mask:
+# Michał Górny <mgorny@gentoo.org> (12 Sep 2013)
+# All currently supported Python implementations have built-in json
+# module already. This renders the virtual no longer needed. Please
+# remove your dependencies on it and enjoy json out-of-the-box.
+# Removal in 30 days.
+=virtual/python-json-0
+# required by =virtual/pyparsing-3 (argument)
+# /usr/portage/profiles/package.mask:
+# Michał Górny <mgorny@gentoo.org> (13 Sep 2013)
+# Upstream decided to merge the Python 2&3 variants of pyparsing back
+# into a single package. We no longer support the split variants,
+# and therefore the virtual is unnecessary. Please simply depend
+# on dev-python/pyparsing instead. Removal in 30 days.
+# Including a mask on removed py2&3 variants to enforce upgrade.
+=virtual/pyparsing-3
+# required by =dev-java/itext-5.2.0 (argument)
+# /usr/portage/profiles/package.mask:
+# Tom Wijsman <TomWij@gentoo.org> (15 Aug 2013)
+# Dependencies are unable to satisfy current version,
+# broken; needs a version bump from bug #475552.
+=dev-java/itext-5.2.0
