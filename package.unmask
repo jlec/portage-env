@@ -1,4 +1,4 @@
-www-client/google-chrome
+net-im/gajim
 =virtual/ffmpeg-9*
 =media-video/libav-9*
 <dev-lang/v8-9999
@@ -6,6 +6,15 @@ sci-chemistry/coot
 sci-chemistry/pymol
 >=sci-libs/blas-reference-20110418
 sys-devel/gcc:4.8
-www-client/chromium:0
 app-emulation/emul-linux-x86-xlibs
-www-plugins/chrome-binary-plugins
+app-portage/gpyutils
+# required by app-office/ganttproject-2.6.1::last-hope
+# required by app-office/ganttproject (argument)
+# /usr/portage/profiles/package.mask:
+# Tom Wijsman <TomWij@gentoo.org> (15 Aug 2013)
+# Dependencies are unable to satisfy current version,
+# broken; needs a version bump from bug #475552.
+=dev-java/itext-5.4.3
+app-shells/bash-completion
+app-shells/gentoo-bashcomp
+x11-drivers/xf86-video-nouveau

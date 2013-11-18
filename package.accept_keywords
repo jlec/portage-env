@@ -8,6 +8,8 @@ sys-devel/gcc **
 sys-process/itop **
 www-client/pybugz **
 =x11-libs/xview-bin-3.2_p1428 **
-sys-boot/grub **
-# required by finalterm (argument)
 =x11-terms/finalterm-9999 **
+net-misc/netctl **
+app-portage/gpyutils **
+app-emulation/lxc **
+#~media-video/libav-9.9999 **

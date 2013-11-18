@@ -1,3 +1,5 @@
+unset DISPLAY
+
 post_src_install() {
 	if $(grep -q "is valid for" ${PORTAGE_LOG_FILE}); then
 		addwrite /var/log/portage/flags.log

@@ -4,12 +4,21 @@ app-admin/gentoo-smolt qt4
 app-admin/gnome-system-tools nfs policykit samba sambe
 app-admin/hddtemp network-cron
 app-admin/sudo -ldap
+>=app-arch/bzip2-1.0.6-r4 abi_x86_32
 app-arch/lbzip2 symlink
 app-arch/libarchive xattr
 app-arch/p7zip -X rar wxwindows
 app-arch/pigz symlink
 app-arch/tar xattr
 app-arch/unzip natspec
+# required by media-libs/tiff-4.0.3-r3[lzma]
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+=app-arch/xz-utils-5.0.5-r1 abi_x86_32
 app-backup/deja-dup nautilus
 app-benchmarks/bootchart acct java
 app-benchmarks/bootchart2 svg
@@ -23,22 +32,27 @@ app-crypt/pinentry gtk
 app-crypt/seahorse dbus gnome-keyring libnotify
 app-crypt/seahorse-plugins applet libnotify
 app-doc/abs-guide pdf
-# required by sci-libs/shogun-2.0.0[doc]
-# required by shogun (argument)
 >=app-doc/doxygen-1.8.3.1 dot
 app-doc/tldp-howto -html -pdf htmlsingle
 app-editors/gedit python spell zeitgeist
 app-editors/gedit-plugins bookmarks bracketcompletion colorpicker drawspaces joinlines showtabbar smartspaces terminal
+app-emulation/emul-linux-x86-baselibs abi_x86_32
+app-emulation/emul-linux-x86-gtklibs abi_x86_32
+app-emulation/emul-linux-x86-medialibs abi_x86_32
+app-emulation/emul-linux-x86-opengl abi_x86_32
+app-emulation/emul-linux-x86-soundlibs abi_x86_32
+app-emulation/emul-linux-x86-xlibs abi_x86_32
 app-emulation/libvirt -macvtap -pcap -vde -vepa -virt-network caps lxc nfs parted python qemu sasl systemd udev virtualbox
+>=app-emulation/libvirt-glib-0.1.7 python
 app-emulation/lxc examples
-app-emulation/qemu -alsa -pcap -sdl -vde aio qemu-ifup sasl tls xattr
+app-emulation/qemu -alsa -pcap -sdl -vde aio fdt qemu-ifup sasl tls xattr
 app-emulation/virt-manager sasl
 app-emulation/virtualbox -alsa additions extensions qt4
 app-i18n/ibus dconf
 app-misc/byobu screen
 app-misc/mc -ncurses slang
 app-misc/pax-utils caps
-app-misc/screen multiuser
+app-misc/screen -multiuser
 app-misc/tracker applet exif iptc mp3 nautilus pdf thunderbird
 app-misc/unfoo -minimal
 app-mobilephone/gnokii bluetooth ical sms usb
@@ -55,13 +69,20 @@ app-pda/libsyncml bluetooth
 app-portage/eix -hardened optimization sqlite strong-optimization tools
 app-portage/layman git subversion
 app-portage/pfl network-cron
-app-portage/squashed-portage zsync
+app-portage/squashed-portage aufs zsync
 app-text/acroread -ldap -nsplugin
 app-text/aspell linguas_de
 app-text/evince -dvi djvu t1lib
 app-text/ghostscript-gpl cups
 app-text/hunspell linguas_de
 app-text/lcdf-typetools kpathsea
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=app-text/libpaper-1.1.24-r2 abi_x86_32
 app-text/nopaste -X
 app-text/passivetex -doc
 app-text/poppler cairo glib jpeg png qt4 utils
@@ -78,11 +99,15 @@ dev-games/cegui devil opengl
 dev-java/antlr java
 dev-java/glazedlists java5
 dev-java/log4j -javamail
-# required by app-misc/mucommander-0.9.0::last-hope
-# required by app-misc/mucommander (argument)
 >=dev-java/slf4j-1.7.5 simple
 dev-java/swt -xulrunner
 dev-lang/R lapack
+# required by media-libs/schroedinger-1.0.11-r1
+# required by media-video/ffmpeg-0.10.9[schroedinger]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=dev-lang/orc-0.4.18 abi_x86_32
 dev-lang/path64 -assembler
 dev-lang/perl ithreads
 dev-lang/php gd
@@ -95,17 +120,67 @@ dev-libs/apr-util -ldap openssl
 dev-libs/boost -mpi -static-libs expat python threads
 dev-libs/cyrus-sasl -berkdb -ldap -sqlite crypt
 dev-libs/elfutils lzma
-dev-libs/folks -tracker socialweb
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r12[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r13
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/elfutils-0.155-r1 abi_x86_32
+>=dev-libs/expat-2.1.0-r3 abi_x86_32
+dev-libs/folks -tracker -vala socialweb
+>=dev-libs/folks-0.9.3 eds
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=dev-libs/fribidi-0.19.5-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/glib-2.36.3-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-gtklibs-20131008
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+>=dev-libs/gmp-5.1.3-r1 abi_x86_32
 dev-libs/keybinder python
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=dev-libs/libcdio-0.90-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=dev-libs/libcdio-paranoia-0.90_p1-r1 abi_x86_32
 dev-libs/libf2c static
+>=dev-libs/libffi-3.0.13-r1 abi_x86_32
 dev-libs/libgcrypt -caps
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=dev-libs/liboil-0.3.17-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r3[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre-8.33-r1 abi_x86_32
 dev-libs/libpthread-stubs abi_x86_32
+>=dev-libs/libusb-compat-0.1.5-r2 abi_x86_32
 dev-libs/libusbx udev
+>=dev-libs/libusbx-1.0.16-r3 abi_x86_32
 dev-libs/libwiimote force tilt
 dev-libs/libxml2 python
 dev-libs/maloc -mpi
 dev-libs/nss utils
 dev-libs/openobex bluetooth usb
+>=dev-libs/udis86-1.7-r2 abi_x86_32
 dev-libs/xapian -sse
 dev-libs/xapian-bindings python
 dev-perl/Locale-gettext -doc
@@ -113,12 +188,7 @@ dev-perl/Text-CSV_XS -doc
 dev-perl/Text-Iconv -doc
 dev-perl/XML-Filter-BufferText -doc
 dev-python/PyQt4 assistant dbus sql svg
-# required by dev-util/ninja-ide-2.1.1-r5
-# required by dev-util/ninja-ide (argument)
 >=dev-python/PyQt4-4.10 webkit
-# required by dev-util/ninja-ide-2.3
-# required by @selected
-# required by @world (argument)
 >=dev-python/PyQt4-4.10.2 declarative
 dev-python/astng -python_targets_python3_3
 dev-python/imaging tk
@@ -126,14 +196,11 @@ dev-python/ipython -gnuplot -wxwidgets matplotlib
 dev-python/matplotlib tk
 dev-python/numpy lapack
 dev-python/pandas -python_targets_python3_2 excel
-# required by virtual/python-imaging-1[python_targets_python3_2]
-# required by media-gfx/qrencode-python-1.01-r1
-# required by @selected
-# required by @world (argument)
 >=dev-python/pillow-2.0.0 tk
 dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
 dev-python/pypy sqlite
+dev-python/pypy-bin sqlite
 dev-python/pyside script sql svg webkit xmlpatterns
 dev-python/qscintilla-python qt4
 dev-python/rdflib sqlite
@@ -145,44 +212,21 @@ dev-qt/qthelp compat
 dev-qt/qtopengl -egl
 dev-qt/qtsql qt3support
 dev-ruby/json ruby_targets_ruby19
-# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby20]
-# required by dev-lang/ruby-2.0.0_p247[rdoc]
-# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
 >=dev-ruby/json-1.8.0 ruby_targets_ruby20
 dev-ruby/racc ruby_targets_ruby19
-# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby20]
-# required by dev-lang/ruby-2.0.0_p247[rdoc]
-# required by dev-ruby/rubygems-2.0.3[ruby_targets_ruby19]
-# required by virtual/rubygems-6
-# required by dev-ruby/rake-0.9.6
-# required by dev-ruby/json-1.8.0[-test,-doc,ruby_targets_ruby20]
 >=dev-ruby/racc-1.4.9 ruby_targets_ruby20
 dev-ruby/rake ruby_targets_ruby19
-# required by dev-lang/ruby-2.0.0_p247
-# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
-# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby19]
-# required by dev-lang/ruby-1.9.3_p448[rdoc]
-# required by dev-ruby/rubygems-2.0.3[ruby_targets_ruby19]
-# required by virtual/rubygems-6
-# required by dev-ruby/json-1.8.0[-test,ruby_targets_ruby20]
 >=dev-ruby/rake-0.9.6 ruby_targets_ruby20
 dev-ruby/rdoc ruby_targets_ruby19
-# required by dev-lang/ruby-2.0.0_p247[rdoc]
-# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
 >=dev-ruby/rdoc-4.0.1-r1 ruby_targets_ruby20
 dev-ruby/ruby-elf -jruby
 dev-ruby/rubygems ruby_targets_ruby19
-# required by dev-lang/ruby-2.0.0_p247
-# required by dev-ruby/racc-1.4.9[ruby_targets_ruby20]
-# required by dev-ruby/rdoc-4.0.1-r1[ruby_targets_ruby19]
-# required by dev-lang/ruby-1.9.3_p448[rdoc]
-# required by dev-ruby/json-1.8.0[ruby_targets_ruby19]
 >=dev-ruby/rubygems-2.0.3 ruby_targets_ruby20
 dev-scheme/guile discouraged networking threads
 dev-tcltk/tktreectrl shellicon
 dev-util/anjuta devhelp glade graphviz subversion vala
 dev-util/cmake qt4
-dev-util/devhelp gedit
+dev-util/devhelp gedit python_single_target_python3_2
 dev-util/glade doc python
 dev-util/jay java
 dev-util/strace aio
@@ -203,6 +247,7 @@ gnome-base/gvfs afp archive bluetooth cdda fuse gdu gphoto2 ios samba udisks
 gnome-base/libgnomecanvas glade
 gnome-base/nautilus -tracker exif
 gnome-extra/evolution-data-server -kerberos -ldap gnome-online-accounts weather
+>=gnome-extra/evolution-data-server-3.8.4 vala
 gnome-extra/evolution-rss webkit
 gnome-extra/gnome-games guile
 gnome-extra/gnome-media aac flac
@@ -214,8 +259,8 @@ gnome-extra/zeitgeist-datasources chromium eog firefox gedit thunderbird
 gnome-extra/zeitgeist-extensions -fts
 gnome-extra/zenity libnotify
 mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
-mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar smime smtp ssl tokyocabinet
-mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf lightning startup-notification system-sqlite
+mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar slang smime smtp ssl tokyocabinet
+mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf lightning startup-notification system-cairo system-icu system-jpeg system-sqlite
 mail-mta/nullmailer ssl
 mail-mta/ssmtp -md5sum gnutls mta
 media-fonts/terminus-font bolddiag pcf psf
@@ -231,41 +276,294 @@ media-gfx/openvrmlv nsplugin
 media-gfx/pstoedit imagemagick plotutils
 media-gfx/synfig ffmpeg
 media-gfx/ufraw contrast fits gimp timezone
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/a52dec-0.7.4-r7 abi_x86_32
 media-libs/alsa-lib alisp
+# required by media-video/ffmpeg-0.10.9[jpeg2k]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/alsa-lib-1.0.27.2 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/audiofile-0.3.6-r1 abi_x86_32
 media-libs/chromaprint tools
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/faac-1.28-r4 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/faad2-2.7-r3 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+=media-libs/flac-1.2.1-r5 abi_x86_32
 media-libs/fontconfig abi_x86_32
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+>=media-libs/freeglut-2.8.1-r1 abi_x86_32
 media-libs/freetype abi_x86_32 infinality kpathsea lcdfilter
 media-libs/gd fontconfig
 media-libs/gegl exif ffmpeg svg
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+>=media-libs/glew-1.10.0-r2 abi_x86_32
+# required by virtual/glu-9.0-r1
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+=media-libs/glu-9.0.0-r1 abi_x86_32
 media-libs/gst-plugins-base theora
 media-libs/imlib -gtk
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/ladspa-sdk-1.13-r2 abi_x86_32
 media-libs/lcms python
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=media-libs/lcms-2.5-r1 abi_x86_32
 media-libs/libaacplus fftw
+# required by media-video/ffmpeg-0.10.9[aacplus,encode]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libaacplus-2.0.2-r2 abi_x86_32
 media-libs/libafterimage -cvg svg
 media-libs/libcanberra udev
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libcuefile-477-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libdca-0.0.5-r3 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libdv-1.0.0-r3 abi_x86_32
+# required by media-libs/libdvdread-4.2.0-r1[css]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libdvdcss-1.2.13-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+=media-libs/libdvdnav-4.2.0-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+=media-libs/libdvdread-4.2.0-r1 abi_x86_32
 media-libs/libgnome-media-profiles aac mp3
 media-libs/libgphoto2 exif
 media-libs/libgpod ios mono
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libid3tag-0.15.1b-r4 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libiec61883-1.2.0-r1 abi_x86_32
+>=media-libs/libjpeg-turbo-1.3.0-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libmad-0.15.1b-r8 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/libmikmod-3.3.3 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libmimic-1.0.4-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libmms-0.6.2-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/libmodplug-0.8.8.4-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libmpeg2-0.5.1-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/libogg-1.3.1 abi_x86_32
 media-libs/libpng apng
+>=media-libs/libpng-1.6.3-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libreplaygain-477-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/libsamplerate-0.1.8-r1 abi_x86_32
 media-libs/libsdl xv
-media-libs/mesa g3dvl gallium gles2 llvm motif openvg
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libshout-2.3.1-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libsidplay-2.1.1-r4 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/libsndfile-1.0.25-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libtheora-1.1.1-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libv4l-1.0.0 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/libvisual-0.4.0-r3 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/libvorbis-1.3.3-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+=media-libs/libvpx-1.2.0_pre20130625 abi_x86_32
+media-libs/mesa classic g3dvl gallium gles2 llvm motif openvg xa
+# required by virtual/opengl-7.0-r1
+# required by media-libs/glu-9.0.0-r1
+# required by virtual/glu-9.0-r1
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+=media-libs/mesa-9.2.2 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/portaudio-19_pre20111121-r1 abi_x86_32
+# required by media-video/ffmpeg-0.10.9[schroedinger]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/schroedinger-1.0.11-r1 abi_x86_32
 media-libs/sdl-mixer mikmod
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/speex-1.2_rc1-r2 abi_x86_32
 media-libs/tiff lzma
+# required by media-libs/lcms-2.5-r1[tiff]
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=media-libs/tiff-4.0.3-r3 abi_x86_32
+# required by media-video/ffmpeg-0.10.9[aac,encode]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+=media-libs/vo-aacenc-0.1.3 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-libs/webrtc-audio-processing-0.1-r1 abi_x86_32
 media-libs/x264 threads
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+=media-libs/x264-0.0.20130912 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-libs/xvid-1.3.2-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-plugins/alsaequal-0.6-r1 abi_x86_32
 media-plugins/audacious-plugins mad vorbis wma
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-plugins/caps-plugins-0.9.15 abi_x86_32
 media-plugins/gst-plugins-meta a52 aac dvd ffmped ffmpeg lame mad mp3 mpeg ogg taglib theora vorbis xv
 media-plugins/gst-plugins-v4l2 udev
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-plugins/swh-plugins-0.4.15-r3 abi_x86_32
 media-sound/alsa-tools fltk
 media-sound/audacious dbus
 media-sound/banshee aac boo cdda encode flac ipod karma mtp podcast
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/cdparanoia-3.10.2-r6 abi_x86_32
 media-sound/easytag mp3
 media-sound/exaile -libnotify cddb mad
 media-sound/grip vorbis
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/gsm-1.0.13-r1 abi_x86_32
 media-sound/guayadeque indicate ipod
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/jack-audio-connection-kit-0.121.3-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=media-sound/lame-3.99.5-r1 abi_x86_32
 media-sound/lastfm-ripper tagwriting
 media-sound/lastfmplayer ipod
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/mpg123-1.16.0 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/musepack-tools-465-r1 abi_x86_32
 media-sound/picard cdda coverart ffmpeg
 media-sound/streamripper vorbis
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/twolame-0.3.13-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-medialibs (argument)
+>=media-sound/wavpack-4.60.1-r1 abi_x86_32
 media-video/ffmpeg aac aacplus cdio libv4l mp3 network openssl opus schroedinger threads v4l x264
 media-video/gpac a52
 media-video/h264enc aac dvd lame mp4
@@ -284,12 +582,23 @@ net-analyzer/rrdtool -tcl perl
 net-analyzer/wireshark gcrypt smi
 net-dns/avahi gtk3 utils
 net-fs/autofs -ldap
-net-fs/cifs-utils upcall
+net-fs/cifs-utils ads upcall
 net-fs/netatalk avahi
 net-fs/nfs-utils -nfsv3 nfsdcld nfsidmap nfsv41
 net-fs/samba -cups -ldap acl server swat syslog
-# required by net-fs/cifs-utils-6.1[acl]
 =net-fs/samba-3.6.16 winbind
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+# required by net-fs/cifs-utils-6.1[acl]
+=net-fs/samba-3.6.18 winbind
+# required by net-fs/cifs-utils-6.1-r1[acl]
+=net-fs/samba-3.6.19 winbind
+# required by net-fs/cifs-utils-6.2[acl]
+=net-fs/samba-3.6.20 winbind
 net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
 net-im/pidgin -ncurses gnutls gstreamer python spell
 net-im/skype qt-static
@@ -300,7 +609,7 @@ net-libs/libsocialweb -networkmanager vala
 net-libs/libsoup gnome
 net-libs/libsoup-gnome gnome
 net-libs/neon -linguas_de
-net-libs/webkit-gtk -debug -pango gstreamer
+net-libs/webkit-gtk -debug -pango gstreamer libsecret
 net-libs/xulrunner -java custom-optimization ipc libnotify system-sqlite
 net-misc/aria2 scripts xmlrpc
 net-misc/curl -ldap -nss gnutls threads
@@ -311,9 +620,6 @@ net-misc/openssh -hpn ldns
 net-misc/openvpn -threads iproute2 passwordsave
 net-misc/rdesktop -alsa
 net-misc/spice-gtk -gstreamer python sasl
-# required by app-emulation/virt-manager-0.10.0
-# required by @selected
-# required by @world (argument)
 >=net-misc/spice-gtk-0.18 gtk3
 net-misc/vde pcap
 net-misc/vinagre rdp
@@ -358,7 +664,7 @@ sci-chemistry/ccpnmr examples
 sci-chemistry/cns aria debug openmp scripts
 sci-chemistry/coot new-interface
 sci-chemistry/cyana -examples
-sci-chemistry/gromacs altivec blas lapack xml
+sci-chemistry/gromacs altivec blas cuda lapack xml
 sci-chemistry/hkl2map-bin script
 sci-chemistry/jmol client-only
 sci-chemistry/mifit debug examples
@@ -376,6 +682,12 @@ sci-libs/blas-goto threads
 sci-libs/cctbx -threads minimal openmp
 sci-libs/cholmod metis
 sci-libs/fftw -mpi avx quad threads
+# required by media-libs/libaacplus-2.0.2-r2[fftw]
+# required by media-video/ffmpeg-0.10.9[aacplus,encode]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+=sci-libs/fftw-3.3.3-r3 abi_x86_32
 sci-libs/gdal -geos
 sci-libs/geos python
 sci-libs/hdf5 -threads
@@ -384,6 +696,9 @@ sci-libs/mkl -mpi fftw fortran95 int64
 sci-libs/netcdf -hdf5 fortran
 sci-libs/scip fftw
 sci-libs/scipy umfpack
+# required by sci-libs/scikits_image-0.8.2
+# required by sci-libs/scikits_image (argument)
+>=sci-libs/scipy-0.12.0 sparse
 sci-libs/starparse guile
 sci-libs/vtk -mpi R boost cg ffmpeg patented python qt4 tcl theora tk
 sci-mathematics/pari gmp
@@ -393,6 +708,13 @@ sci-visualization/grace fftw
 sci-visualization/mayavi qt4
 sci-visualization/qtiplot emf latex ods origin png python xls
 sys-apps/acl nfs
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20130224-r11
+# required by app-emulation/emul-linux-x86-soundlibs-20130224-r10
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-apps/attr-2.4.47-r1 abi_x86_32
 sys-apps/coreutils acl gmp
 sys-apps/flashrom gfxnvidia nicintel_spi
 sys-apps/gnome-disk-utility fat
@@ -402,10 +724,53 @@ sys-apps/irqbalance caps
 sys-apps/kexec-tools lzma
 sys-apps/man-db -gdbm berkdb
 sys-apps/pciutils zlib
-sys-apps/portage -doc
+sys-apps/portage -doc python3
 sys-apps/shadow xattr
 sys-apps/smartmontools minimal
-sys-apps/systemd gudev hwdb kmod
+sys-apps/systemd gudev hwdb introspection kmod lzma policykit
+=sys-apps/systemd-206-r2 abi_x86_32
+=sys-apps/systemd-206-r3 abi_x86_32
+# required by virtual/udev-206-r2
+# required by gnome-extra/nm-applet-0.9.8.4
+# required by gnome-base/gnome-control-center-3.8.5
+# required by net-libs/gnome-online-accounts-3.8.3[gnome]
+# required by dev-libs/libgdata-0.14.0[gnome]
+# required by gnome-extra/gnome-documents-3.8.4
+# required by gnome-base/gnome-extra-apps-3.8.0-r1[tracker]
+# required by gnome-base/gnome-3.8.0[extras]
+# required by @selected
+# required by @world (argument)
+=sys-apps/systemd-207 abi_x86_32
+# required by virtual/udev-206-r2
+# required by net-im/empathy-3.8.4
+# required by net-im/empathy (argument)
+=sys-apps/systemd-207-r1 abi_x86_32
+# required by virtual/udev-206-r2
+# required by dev-libs/libatasmart-0.19-r1
+# required by gnome-base/libgdu-3.0.2
+# required by gnome-base/gvfs-1.16.3[gdu]
+# required by media-gfx/gimp-2.8.6[gnome]
+# required by media-gfx/ufraw-0.19.2[gimp]
+# required by media-gfx/imagemagick-6.8.6.8-r1[raw]
+# required by media-gfx/pstoedit-3.62[imagemagick]
+# required by sci-chemistry/easychem-0.6-r1
+# required by @selected
+# required by @world (argument)
+=sys-apps/systemd-207-r2 abi_x86_32
+# required by virtual/udev-206-r3
+# required by net-misc/networkmanager-0.9.8.6
+# required by gnome-base/gnome-control-center-3.8.5-r1
+# required by gnome-base/gnome-shell-3.8.4-r1
+# required by gnome-extra/gnome-shell-extensions-3.8.4
+# required by @selected
+# required by @world (argument)
+=sys-apps/systemd-208-r1 abi_x86_32
+# required by virtual/udev-206-r3
+# required by www-client/chromium-31.0.1650.12
+# required by www-plugins/chrome-binary-plugins-31.0.1650.12_beta1
+# required by @selected
+# required by @world (argument)
+=sys-apps/systemd-208-r2 abi_x86_32
 sys-apps/texinfo -doc
 sys-apps/util-linux crypt slang udev
 sys-apps/v86d x86emu
@@ -422,6 +787,7 @@ sys-devel/gcc -gcj -gtk -libffi fortran graphite lto multilib
 sys-devel/gdb expat python
 sys-devel/gettext -doc
 sys-devel/llvm gold
+=sys-devel/llvm-3.3-r1 abi_x86_32 clang
 sys-devel/patch xattr
 sys-fs/aufs2 inotify kernel-patch nfs
 sys-fs/aufs3 inotify kernel-patch nfs
@@ -431,36 +797,73 @@ sys-fs/quota netlink rpc
 sys-fs/udev edd extras gudev hwdb keymap
 sys-fs/udisks crypt
 sys-kernel/lh-sources symlink
-sys-libs/glibc glibc-omitfp multilib
-sys-libs/ncurses tinfo
-sys-libs/pam -nis
-# required by sys-libs/tevent-0.9.18
-# required by net-fs/samba-3.6.16
-# required by gnome-base/gnome-vfs-2.24.4-r1[samba]
-# required by gnome-base/libgnome-2.32.1-r1
-# required by dev-python/libgnome-python-2.28.1
-# required by x11-terms/terminator-0.97[gnome]
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
+# required by x11-libs/libSM-1.2.1-r1[uuid,abi_x86_32]
+# required by app-cdr/brasero-3.8.0
+# required by media-sound/sound-juicer-3.5.1_pre20121231
 # required by @selected
 # required by @world (argument)
+>=sys-libs/e2fsprogs-libs-1.42.7-r1 abi_x86_32
+sys-libs/glibc glibc-omitfp multilib
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
+# required by x11-libs/libSM-1.2.1-r1[uuid,abi_x86_32]
+# required by app-cdr/brasero-3.8.0
+# required by media-sound/sound-juicer-3.5.1_pre20121231
+# required by @selected
+# required by @world (argument)
+>=sys-libs/gpm-1.20.7-r2 abi_x86_32
+>=sys-libs/libavc1394-0.5.4-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
+# required by app-emulation/emul-linux-x86-soundlibs (argument)
+>=sys-libs/libieee1284-0.2.11-r3 abi_x86_32
+>=sys-libs/libraw1394-2.1.0-r1 abi_x86_32
+sys-libs/ncurses gpm tinfo
+# required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
+# required by x11-libs/libSM-1.2.1-r1[uuid,abi_x86_32]
+# required by app-cdr/brasero-3.8.0
+# required by media-sound/sound-juicer-3.5.1_pre20121231
+# required by @selected
+# required by @world (argument)
+>=sys-libs/ncurses-5.9-r3 abi_x86_32
+sys-libs/pam -nis
 >=sys-libs/talloc-2.0.8 python
 sys-libs/zlib minizip
+>=sys-libs/zlib-1.2.8-r1 abi_x86_32
 sys-power/nvclock nvcontrol
 sys-power/upower ios
 sys-process/htop cgroup
 sys-process/lsof rpc
 virtual/ffmpeg X encode mp3 threads x264
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+>=virtual/glu-9.0-r1 abi_x86_32
+>=virtual/jpeg-0-r1 abi_x86_32
 virtual/latex-base -doc
-virtual/mpi fortran romio
-virtual/mysql minimal
-virtual/perl-Locale-Maketext-Simple -doc
-virtual/poppler-glib cairo
-# required by sci-chemistry/mgltools-1.5.6::science
+>=virtual/libffi-3.0.13-r1 abi_x86_32
+# required by dev-libs/glib-2.36.3-r2
+# required by dev-libs/fribidi-0.19.5-r2
+# required by media-libs/libass-0.10.1
+# required by media-video/mplayer-1.2_pre20130729[libass]
 # required by @selected
 # required by @world (argument)
+>=virtual/libiconv-0-r1 abi_x86_32
+>=virtual/libusb-1-r1 abi_x86_32
+virtual/mpi fortran romio
+virtual/mysql minimal
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+>=virtual/opengl-7.0-r1 abi_x86_32
+virtual/perl-Locale-Maketext-Simple -doc
+virtual/poppler-glib cairo
+virtual/pypy ncurses sqlite
 >=virtual/python-imaging-1 tk
 virtual/tex-base -doc
 virtual/texi2dvi -doc
 virtual/udev -keymap gudev hwdb
+>=virtual/udev-206-r1 abi_x86_32
 www-apps/swish-e -mp3 -pdf -perl
 www-client/chromium -system-ffmpeg custom-cflags system-v8
 www-client/firefox custom-optimization gconf gpo ipc libnotify linguas_en_GB linguas_en_US pgo system-sqlite
@@ -502,15 +905,48 @@ x11-libs/fltk xft
 >=x11-libs/libXxf86dga-1.1.3-r1 abi_x86_32
 >=x11-libs/libXxf86vm-1.1.2-r1 abi_x86_32
 >=x11-libs/libdrm-2.4.37 libkms
+# required by media-libs/mesa-9.2.2
+# required by virtual/opengl-7.0-r1
+# required by media-libs/glu-9.0.0-r1
+# required by virtual/glu-9.0-r1
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+=x11-libs/libdrm-2.4.47 abi_x86_32
+# required by media-libs/mesa-9.2.2
+# required by gnome-base/gnome-shell-3.8.4-r1
+# required by gnome-base/gnome-3.8.0-r1
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.48 abi_x86_32
 >=x11-libs/libpciaccess-0.13.1-r1 abi_x86_32
 >=x11-libs/libvdpau-0.5-r1 abi_x86_32
 >=x11-libs/libxcb-1.9-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-gtklibs-20131008-r1[abi_x86_32]
+# required by app-emulation/emul-linux-x86-gtklibs (argument)
+=x11-libs/pixman-0.30.2-r1 abi_x86_32
 x11-libs/qwt svg
 x11-libs/vte python
 x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startup-notification
 >=x11-proto/compositeproto-0.4.2-r1 abi_x86_32
 >=x11-proto/damageproto-1.2.1-r1 abi_x86_32
+# required by media-libs/mesa-9.2.2
+# required by virtual/opengl-7.0-r1
+# required by media-libs/glu-9.0.0-r1
+# required by virtual/glu-9.0-r1
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+=x11-proto/dri2proto-2.8-r1 abi_x86_32
 >=x11-proto/fixesproto-5.0-r1 abi_x86_32
+# required by media-libs/mesa-9.2.2
+# required by virtual/opengl-7.0-r1
+# required by media-libs/glu-9.0.0-r1
+# required by virtual/glu-9.0-r1
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+=x11-proto/glproto-1.4.16-r1 abi_x86_32
 >=x11-proto/inputproto-2.3 abi_x86_32
 >=x11-proto/kbproto-1.0.6-r1 abi_x86_32
 >=x11-proto/printproto-1.0.5-r1 abi_x86_32
@@ -523,6 +959,14 @@ x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startu
 >=x11-proto/xextproto-7.2.1-r1 abi_x86_32
 >=x11-proto/xf86bigfontproto-1.2.0-r1 abi_x86_32
 >=x11-proto/xf86dgaproto-2.1-r2 abi_x86_32
+# required by media-libs/mesa-9.2.2
+# required by virtual/opengl-7.0-r1
+# required by media-libs/glu-9.0.0-r1
+# required by virtual/glu-9.0-r1
+# required by media-libs/glew-1.10.0-r2
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-opengl (argument)
+=x11-proto/xf86driproto-2.1.1-r1 abi_x86_32
 >=x11-proto/xf86vidmodeproto-2.3.1-r1 abi_x86_32
 >=x11-proto/xineramaproto-1.2.1-r1 abi_x86_32
 >=x11-proto/xproto-7.0.23-r2 abi_x86_32
@@ -532,4 +976,14 @@ x11-themes/gentoo-artwork offensive
 x11-themes/gtk-engines-murrine themes
 x11-themes/zukitwo gnome-shell
 x11-wm/fluxbox imlib
-
+>=media-libs/libpng-1.2.50-r1:1.2 abi_x86_32
+>=virtual/libusb-0-r1:0 abi_x86_32
+>=media-libs/tiff-3.9.7-r1:3 abi_x86_32
+>=media-libs/openjpeg-1.5.1-r1:0 abi_x86_32
+>=media-libs/libsidplay-1.36.59-r1:1 abi_x86_32
+>=media-video/ffmpeg-0.10.9:0.10 abi_x86_32
+# required by app-emulation/emul-linux-x86-gtklibs-20131008-r1[abi_x86_32]
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+=x11-libs/pixman-0.32.4 abi_x86_32
