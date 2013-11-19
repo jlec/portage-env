@@ -150,6 +150,11 @@ dev-libs/folks -tracker socialweb
 # required by @selected
 # required by @world (argument)
 >=dev-libs/glib-2.36.3-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r2[abi_x86_32]
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+>=dev-libs/gmp-5.1.3-r1 abi_x86_32
 dev-libs/keybinder python
 dev-libs/libf2c static
 # required by virtual/libffi-3.0.13-r1
@@ -158,6 +163,11 @@ dev-libs/libf2c static
 # required by @selected
 # required by @world (argument)
 >=dev-libs/libffi-3.0.13-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r3[abi_x86_32]
+# required by sci-chemistry/nmrpipe-8.1.2013.218.23.09-r1::science
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre-8.33-r1 abi_x86_32
 dev-libs/libpthread-stubs abi_x86_32
 # required by virtual/libusb-0-r1
 # required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
@@ -203,12 +213,21 @@ dev-python/PyQt4 assistant dbus sql svg
 # required by @selected
 # required by @world (argument)
 >=dev-python/PyQt4-4.10.2 declarative
-dev-python/astng -python_targets_python3_3
+# required by net-analyzer/linkchecker-8.3[X]
+# required by net-analyzer/linkchecker (argument)
+>=dev-python/PyQt4-4.10.3-r1 help
 dev-python/imaging tk
 dev-python/ipython -gnuplot -wxwidgets matplotlib notebook
-dev-python/matplotlib gtk3 tk
+# required by dev-python/ipython-1.1.0[notebook,-nbconvert]
+# required by @selected
+# required by @world (argument)
+dev-python/matplotlib -tk gtk3
+# required by sci-chemistry/aria-2.3.2_p20130826
+# required by @selected
+# required by @world (argument)
+>=dev-python/matplotlib-1.3.0 tk
 dev-python/numpy lapack
-dev-python/pandas -python_targets_python3_2 excel
+dev-python/pandas excel
 >=dev-python/pillow-2.0.0 tk
 dev-python/pycairo svg
 dev-python/pyglet -alsa -openal
@@ -220,7 +239,6 @@ dev-python/pyside script sql svg webkit xmlpatterns
 dev-python/qscintilla-python qt4
 dev-python/rdflib sqlite
 dev-python/sphinx latex
-dev-python/statsmodels -python_targets_python3_2
 dev-python/traitsgui qt4 wxwidgets
 dev-qt/qtcore glib qt3support
 dev-qt/qtgui -egl dbus gtkstyle mng qt3support
@@ -267,7 +285,7 @@ dev-scheme/guile discouraged networking threads
 dev-tcltk/tktreectrl shellicon
 dev-util/anjuta devhelp glade graphviz subversion vala
 dev-util/cmake qt4
-dev-util/devhelp -python_single_target_python2_7 gedit python_single_target_python3_2
+dev-util/devhelp -python_single_target_python2_7 -python_single_target_python3_2 gedit python_single_target_python3_3
 dev-util/glade doc python
 dev-util/jay java
 dev-util/strace aio
@@ -299,8 +317,8 @@ gnome-extra/zeitgeist-datasources chromium firefox thunderbird
 gnome-extra/zeitgeist-extensions -fts
 gnome-extra/zenity libnotify
 mail-client/evolution -gnome-online-accounts clutter crypt dbus exchange gstreamer hal python ssl
-mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar smime smtp ssl tokyocabinet
-mail-client/thunderbird -libnotify -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf lightning startup-notification system-cairo system-icu system-jpeg system-sqlite
+mail-client/mutt crypt debug gnutls gpg idn imap sasl sidebar slang smime smtp ssl tokyocabinet
+mail-client/thunderbird -linguas_en -linguas_en_GB -linguas_en_US -sqlite crypt custom-cflags custom-optimization dbus gconf libnotify lightning startup-notification system-cairo system-icu system-jpeg system-sqlite
 mail-mta/nullmailer ssl
 mail-mta/ssmtp -md5sum gnutls mta
 media-fonts/terminus-font bolddiag pcf psf
@@ -400,13 +418,14 @@ net-analyzer/wireshark -gtk2 gcrypt gtk3 smi
 net-dns/avahi gtk3 utils
 net-dns/dnsmasq -dhcp
 net-fs/autofs -mount-locking ldap
-net-fs/cifs-utils upcall
+net-fs/cifs-utils ads upcall
 net-fs/netatalk -avahi
 net-fs/nfs-utils -nfsv3 nfsdcld nfsidmap nfsv41
 net-fs/samba -cups -ldap acl server swat syslog winbind
 net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
 net-im/pidgin -ncurses gnutls gstreamer python spell
 net-im/skype qt-static
+net-irc/hexchat gtkspell libnotify spell
 net-libs/gtk-vnc gtk3 python sasl
 net-libs/libnfsidmap -ldap
 net-libs/libnice gstreamer
@@ -424,6 +443,7 @@ net-misc/networkmanager -ppp dhcpcd nss
 net-misc/openssh hpn ldns
 net-misc/openvpn -threads iproute2 passwordsave
 net-misc/rdesktop -alsa
+net-misc/rsync xattr
 net-misc/spice-gtk -gstreamer python sasl
 # required by app-emulation/virt-manager-0.10.0[spice]
 # required by @selected
@@ -539,7 +559,7 @@ sys-cluster/maui pbs
 sys-cluster/mpich2 fortran mpi-threads romio threads
 sys-cluster/openmpi -threads
 sys-cluster/torque -tk cpuset cpusets crypt
-sys-devel/gcc -gtk -libffi fortran gcj graphite lto multilib
+sys-devel/gcc -gtk -libffi fortran gcj graphite lto
 sys-devel/gdb expat python
 sys-devel/gettext -doc
 sys-devel/llvm gold
@@ -556,6 +576,13 @@ sys-fs/udev edd extras gudev hwdb keymap
 # required by virtual/udev-206-r2
 # required by virtual/udev (argument)
 =sys-fs/udev-207 abi_x86_32
+# required by virtual/udev-206-r3
+# required by sys-fs/lvm2-2.02.103[udev]
+# required by sys-block/parted-3.1-r1[device-mapper]
+# required by sys-block/gparted-0.16.1
+# required by @selected
+# required by @world (argument)
+=sys-fs/udev-208 abi_x86_32
 # required by virtual/udev-206-r2
 # required by app-emulation/emul-linux-x86-baselibs-20130224-r11[abi_x86_32]
 # required by app-emulation/emul-linux-x86-medialibs-20130224-r12
@@ -571,7 +598,7 @@ sys-kernel/lh-sources symlink
 # required by @selected
 # required by @world (argument)
 >=sys-libs/e2fsprogs-libs-1.42.7-r1 abi_x86_32
-sys-libs/glibc glibc-omitfp multilib
+sys-libs/glibc glibc-omitfp
 # required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
 # required by app-text/acroread-9.5.5
 # required by @selected
@@ -691,7 +718,6 @@ www-plugins/adobe-flash nspluginwrapper
 x11-apps/mesa-progs -gles1 egl gles2
 x11-base/xorg-drivers udev
 x11-base/xorg-server hal udev xvfb
-x11-drivers/nvidia-drivers multilib
 x11-libs/cairo X glitz svg xcb
 x11-libs/fltk xft
 >=x11-libs/gdk-pixbuf-2.24.0-r1 jpeg
@@ -766,6 +792,7 @@ xfce-base/xfdesktop libnotify
 xfce-base/xfwm4 -xcomposite
 xfce-extra/tumbler curl ffmpeg odf pdf
 xfce-extra/xfce4-sensors-plugin libnotify lm_sensors
+x11-drivers/nvidia-drivers
 dev-java/java-config
 sys-devel/gcc:4.1 -gcj
 sys-devel/gcc:4.6 -gcj
@@ -773,10 +800,3 @@ sys-devel/gcc:4.6 -gcj
 >=media-libs/tiff-3.9.7-r1:3 abi_x86_32
 >=virtual/libusb-0-r1:0 abi_x86_32
 >=virtual/jpeg-0-r2:0 abi_x86_32
-# required by virtual/udev-206-r3
-# required by sys-fs/lvm2-2.02.103[udev]
-# required by sys-block/parted-3.1-r1[device-mapper]
-# required by sys-block/gparted-0.16.1
-# required by @selected
-# required by @world (argument)
-=sys-fs/udev-208 abi_x86_32

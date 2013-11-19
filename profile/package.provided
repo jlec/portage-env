@@ -11,3 +11,9 @@ dev-texlive/texlive-basic-2013
 dev-texlive/texlive-genericrecommended-2013
 dev-texlive/texlive-latex-2013
 dev-tex/luatex-0.76.0
+dev-libs/kpathsea-6.1.1_p20130530
+dev-texlive/texlive-plainextra-2013
+app-text/texlive-core-2013-r1
+dev-tex/bibtexu-3.71_p20130530
+
+app-text/dvipng-1.14
