@@ -14,3 +14,7 @@ dev-texlive/texlive-basic-2012
 dev-texlive/texlive-genericrecommended-2012
 app-text/dvipng-1.14
 sci-biology/ncbi-tools++-9
+app-text/texlive-core-2013-r1
+dev-libs/kpathsea-6.1.1_p20130530
+dev-texlive/texlive-basic-2013
+dev-texlive/texlive-latex-2013

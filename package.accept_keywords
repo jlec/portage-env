@@ -12,4 +12,6 @@ www-client/pybugz **
 net-misc/netctl **
 app-portage/gpyutils **
 app-emulation/lxc **
-#~media-video/libav-9.9999 **
+~media-video/libav-9.9999 **
+#~media-video/libav-9999 **
+dev-vcs/hub **

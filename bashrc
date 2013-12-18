@@ -32,6 +32,29 @@ post_src_install() {
 #	EOF
 #	chmod 775 ${i}
 #	done
+
+	local pngfile
+	for pngfile in $(find "${ED}" -type f -name "*.png"); do
+#		pngfix -q -w ${pngfile}
+		pngfix -e "${pngfile}" &> /dev/null || ewarn "$(pngfix -q -e ${pngfile} 2>&1)"
+	done
+
+	echo
+#set -x
+	if type -p pngcrush > /dev/null; then
+		for pngfile in $(find "${ED}" -type f -name "*.png"); do
+			einfo "Fixing ${pngfile}"
+			pngfix -q --out="${pngfile/.png/_gefixored.png}" "${pngfile}"
+			pngcrush -q -fix -force "${pngfile/.png/_gefixored.png}" "${pngfile}" &>/dev/null || die
+			rm "${pngfile/.png/_gefixored.png}" || die
+#			echo -e ".\c"
+		done
+	else
+		ewarn "pngcrush not installed"
+	fi
+#	fi
+#set +x
+	echo
 }
 
 post_pkg_postinst() {

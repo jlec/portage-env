@@ -115,7 +115,7 @@ dev-lang/python sqlite tk
 dev-lang/spidermonkey threadsafe
 dev-lang/swig ccache
 dev-lang/tcl threads
-dev-lang/tk -truetype threads
+dev-lang/tk threads truetype
 dev-libs/apr-util -ldap openssl
 dev-libs/boost -mpi -static-libs expat python threads
 dev-libs/cyrus-sasl -berkdb -ldap -sqlite crypt
@@ -147,6 +147,14 @@ dev-libs/folks -tracker -vala socialweb
 # required by @selected
 # required by @world (argument)
 >=dev-libs/gmp-5.1.3-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r5[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=dev-libs/json-c-0.11-r1 abi_x86_32
 dev-libs/keybinder python
 # required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
 # required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
@@ -193,7 +201,7 @@ dev-python/PyQt4 assistant dbus sql svg
 dev-python/astng -python_targets_python3_3
 dev-python/imaging tk
 dev-python/ipython -gnuplot -wxwidgets matplotlib
-dev-python/matplotlib tk
+dev-python/matplotlib -gtk gtk3 tk
 dev-python/numpy lapack
 dev-python/pandas -python_targets_python3_2 excel
 >=dev-python/pillow-2.0.0 tk
@@ -268,6 +276,7 @@ media-fonts/texcm-ttf -doc
 media-gfx/gimp aalib dbus exif lcms mng pdf postscript svg udev wmf xpm
 media-gfx/graphicsmagick q16
 media-gfx/gthumb -gphoto2 exif slideshow svg
+media-gfx/hugin lapack sift
 media-gfx/imagemagick -autotrace corefonts fftw fontconfig jpeg2k lqr opencl postscript q32 svg webp xml
 media-gfx/inkscape lcms mmx postscript
 media-gfx/natural-gentoo build
@@ -342,6 +351,13 @@ media-libs/libaacplus fftw
 # required by app-emulation/emul-linux-x86-soundlibs (argument)
 >=media-libs/libaacplus-2.0.2-r2 abi_x86_32
 media-libs/libafterimage -cvg svg
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=media-libs/libao-1.1.0-r2 abi_x86_32
 media-libs/libcanberra udev
 # required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
 # required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
@@ -465,6 +481,22 @@ media-libs/mesa classic g3dvl gallium gles2 llvm motif openvg xa
 # required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
 # required by app-emulation/emul-linux-x86-opengl (argument)
 =media-libs/mesa-9.2.2 abi_x86_32
+# required by virtual/opengl-7.0-r1
+# required by media-video/vlc-2.1.1[opengl,-egl]
+# required by @selected
+# required by @world (argument)
+=media-libs/mesa-9.2.3 abi_x86_32
+# required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+=media-libs/mesa-9.2.4 abi_x86_32
+# required by virtual/opengl-7.0-r1
+# required by media-video/vlc-2.1.2[-egl,opengl]
+# required by @selected
+# required by @world (argument)
+=media-libs/mesa-9.2.5 abi_x86_32
 # required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
 # required by app-emulation/emul-linux-x86-medialibs-20131008-r1
 # required by app-emulation/emul-linux-x86-medialibs (argument)
@@ -555,6 +587,13 @@ media-sound/lastfmplayer ipod
 # required by app-emulation/emul-linux-x86-medialibs (argument)
 >=media-sound/musepack-tools-465-r1 abi_x86_32
 media-sound/picard cdda coverart ffmpeg
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2[pulseaudio,abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+=media-sound/pulseaudio-4.0-r1 abi_x86_32
 media-sound/streamripper vorbis
 # required by app-emulation/emul-linux-x86-soundlibs-20131008-r1[abi_x86_32]
 # required by app-emulation/emul-linux-x86-medialibs-20131008-r1
@@ -603,6 +642,15 @@ net-im/gajim -gmail crypt dbus idle libnotify spell srv trayicon
 net-im/pidgin -ncurses gnutls gstreamer python spell
 net-im/skype qt-static
 net-libs/gtk-vnc gtk3 python sasl
+# required by media-sound/pulseaudio-4.0-r1[asyncns]
+# required by media-libs/libao-1.1.0-r2[pulseaudio]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=net-libs/libasyncns-0.8-r3 abi_x86_32
 net-libs/libnfsidmap -ldap
 net-libs/libnice gstreamer
 net-libs/libsocialweb -networkmanager vala
@@ -616,7 +664,7 @@ net-misc/curl -ldap -nss gnutls threads
 net-misc/dhcpcd -compat
 net-misc/iperf threads
 net-misc/networkmanager -ppp dhcpcd nss
-net-misc/openssh -hpn ldns
+net-misc/openssh hpn ldns
 net-misc/openvpn -threads iproute2 passwordsave
 net-misc/rdesktop -alsa
 net-misc/spice-gtk -gstreamer python sasl
@@ -716,7 +764,16 @@ sys-apps/acl nfs
 # required by @world (argument)
 >=sys-apps/attr-2.4.47-r1 abi_x86_32
 sys-apps/coreutils acl gmp
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r5[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+=sys-apps/dbus-1.6.18-r1 abi_x86_32
 sys-apps/flashrom gfxnvidia nicintel_spi
+sys-apps/gawk mpfr
 sys-apps/gnome-disk-utility fat
 sys-apps/hal -crypt consolekit
 sys-apps/hwloc -X -cairo
@@ -771,6 +828,14 @@ sys-apps/systemd gudev hwdb introspection kmod lzma policykit
 # required by @selected
 # required by @world (argument)
 =sys-apps/systemd-208-r2 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r5[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-apps/tcp-wrappers-7.6.22-r1 abi_x86_32
 sys-apps/texinfo -doc
 sys-apps/util-linux crypt slang udev
 sys-apps/v86d x86emu
@@ -792,7 +857,7 @@ sys-devel/patch xattr
 sys-fs/aufs2 inotify kernel-patch nfs
 sys-fs/aufs3 inotify kernel-patch nfs
 sys-fs/hfsutils tcl tk
-sys-fs/ntfs3g ntfsprogs
+sys-fs/ntfs3g -crypt ntfsprogs
 sys-fs/quota netlink rpc
 sys-fs/udev edd extras gudev hwdb keymap
 sys-fs/udisks crypt
@@ -804,6 +869,14 @@ sys-kernel/lh-sources symlink
 # required by @selected
 # required by @world (argument)
 >=sys-libs/e2fsprogs-libs-1.42.7-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-baselibs-20131008-r5[abi_x86_32]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-libs/gdbm-1.10-r1 abi_x86_32
 sys-libs/glibc glibc-omitfp multilib
 # required by app-emulation/emul-linux-x86-baselibs-20130224-r13[abi_x86_32]
 # required by x11-libs/libSM-1.2.1-r1[uuid,abi_x86_32]
@@ -813,6 +886,15 @@ sys-libs/glibc glibc-omitfp multilib
 # required by @world (argument)
 >=sys-libs/gpm-1.20.7-r2 abi_x86_32
 >=sys-libs/libavc1394-0.5.4-r1 abi_x86_32
+# required by media-sound/pulseaudio-4.0-r1[caps]
+# required by media-libs/libao-1.1.0-r2[pulseaudio]
+# required by app-emulation/emul-linux-x86-soundlibs-20131008-r2[abi_x86_32]
+# required by app-emulation/emul-linux-x86-medialibs-20131008-r1
+# required by app-emulation/emul-linux-x86-qtlibs-20131008
+# required by net-im/skype-4.2.0.11-r1
+# required by @selected
+# required by @world (argument)
+>=sys-libs/libcap-2.22-r2 abi_x86_32
 # required by app-emulation/emul-linux-x86-medialibs-20131008-r1[abi_x86_32]
 # required by app-emulation/emul-linux-x86-soundlibs-20131008-r1
 # required by app-emulation/emul-linux-x86-soundlibs (argument)
@@ -919,12 +1001,30 @@ x11-libs/fltk xft
 # required by @selected
 # required by @world (argument)
 =x11-libs/libdrm-2.4.48 abi_x86_32
+# required by media-libs/mesa-9.2.3
+# required by x11-apps/mesa-progs-8.1.0
+# required by gnome-base/gnome-shell-3.8.4-r1
+# required by app-admin/eselect-gnome-shell-extensions-20120911
+# required by gnome-extra/gnome-shell-extensions-3.8.4
+# required by @selected
+# required by @world (argument)
+=x11-libs/libdrm-2.4.49-r1 abi_x86_32
+# required by media-libs/mesa-9.2.4
+# required by x11-base/xorg-server-1.14.99.903-r1[-minimal]
+# required by x11-drivers/xf86-video-nouveau-9999::x11
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=x11-libs/libdrm-2.4.50 abi_x86_32
 >=x11-libs/libpciaccess-0.13.1-r1 abi_x86_32
 >=x11-libs/libvdpau-0.5-r1 abi_x86_32
 >=x11-libs/libxcb-1.9-r1 abi_x86_32
 # required by app-emulation/emul-linux-x86-gtklibs-20131008-r1[abi_x86_32]
 # required by app-emulation/emul-linux-x86-gtklibs (argument)
 =x11-libs/pixman-0.30.2-r1 abi_x86_32
+# required by app-emulation/emul-linux-x86-gtklibs-20131008-r1[abi_x86_32]
+# required by app-text/acroread-9.5.5
+# required by @selected
+# required by @world (argument)
+=x11-libs/pixman-0.32.4 abi_x86_32
 x11-libs/qwt svg
 x11-libs/vte python
 x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startup-notification
@@ -947,6 +1047,9 @@ x11-plugins/enigmail custom-optimization dbus linguas_en_GB linguas_en_US startu
 # required by app-emulation/emul-linux-x86-opengl-20131008[abi_x86_32]
 # required by app-emulation/emul-linux-x86-opengl (argument)
 =x11-proto/glproto-1.4.16-r1 abi_x86_32
+# required by media-libs/mesa-9.2.4
+# required by mesa (argument)
+>=x11-proto/glproto-1.4.17 abi_x86_32
 >=x11-proto/inputproto-2.3 abi_x86_32
 >=x11-proto/kbproto-1.0.6-r1 abi_x86_32
 >=x11-proto/printproto-1.0.5-r1 abi_x86_32
@@ -982,8 +1085,3 @@ x11-wm/fluxbox imlib
 >=media-libs/openjpeg-1.5.1-r1:0 abi_x86_32
 >=media-libs/libsidplay-1.36.59-r1:1 abi_x86_32
 >=media-video/ffmpeg-0.10.9:0.10 abi_x86_32
-# required by app-emulation/emul-linux-x86-gtklibs-20131008-r1[abi_x86_32]
-# required by app-text/acroread-9.5.5
-# required by @selected
-# required by @world (argument)
-=x11-libs/pixman-0.32.4 abi_x86_32
